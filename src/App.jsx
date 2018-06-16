@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import PropTypes from 'prop-types';
 
 class App extends Component {
   constructor() {
@@ -16,7 +17,6 @@ class App extends Component {
   }
 
   render() {
-    debugger
     const { error, data } = this.state;
     if (error) {
       return (<div>error</div>);
@@ -24,11 +24,21 @@ class App extends Component {
     else {
       return (
         <div>
-          no error
+          {this.props.bitcoin.USD}
         </div>
       );
     }
   }
 }
+
+App.propTyope = {
+  bitcoin: PropTypes.object,
+  fetchBitcoinPrice: PropTypes.function
+};
+
+App.defaultProps = {
+  bitcoin: {}
+};
+
 
 export default App;

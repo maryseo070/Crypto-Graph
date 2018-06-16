@@ -4,8 +4,9 @@ import { fetchBitcoinPrice } from './actions/api_actions';
 import App from './App';
 
 const msp = state => {
+  debugger
   return {
-    bitcoin: state
+    bitcoin: state.BTC
   };
 };
 
