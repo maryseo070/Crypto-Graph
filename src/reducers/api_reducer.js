@@ -15,7 +15,6 @@ export const bitcoinReducer = (state = {}, action) => {
 
 export const ethMonthReducer = (state = {}, action) => {
   Object.freeze(state);
-  debugger
   switch(action.type){
     case RECEIVE_ETH_MONTH:
       return action.eth.Data;

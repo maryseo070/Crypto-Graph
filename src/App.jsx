@@ -20,7 +20,7 @@ class App extends Component {
   }
 }
 
-App.propTyope = {
+App.propType = {
   bitcoin: PropTypes.object,
   fetchBitcoinPrice: PropTypes.function
 };
