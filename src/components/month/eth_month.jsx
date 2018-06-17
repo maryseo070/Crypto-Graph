@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class ETHMonth extends Component {
 
@@ -15,4 +16,12 @@ class ETHMonth extends Component {
   }
 }
 
+ETHMonth.PropType = {
+  eth: PropTypes.array,
+  fetchETHMonth: PropTypes.func
+};
+
+ETHMonth.defaultProps = {
+  eth: []
+};
 export default ETHMonth;
