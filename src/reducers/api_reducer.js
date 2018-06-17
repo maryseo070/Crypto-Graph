@@ -1,15 +1,32 @@
-import { RECEIVE_BIT } from '../actions/api_actions';
-import { merge } from 'lodash';
+import { RECEIVE_BIT,
+  RECEIVE_ETH_MONTH } from '../actions/api_actions';
+import { combineReducers } from 'redux';
 
-const apiReducer = (state = {}, action) => {
-  debugger
+
+export const bitcoinReducer = (state = {}, action) => {
   Object.freeze(state);
   switch(action.type){
     case RECEIVE_BIT:
-    return action.btc;
+      return action.btc;
     default:
-    return state;
+      return state;
   }
 };
 
-export default apiReducer;
+export const ethMonthReducer = (state = {}, action) => {
+  Object.freeze(state);
+  switch(action.type){
+    case RECEIVE_ETH_MONTH:
+      return action.eth;
+    default:
+      return state;
+  }
+};
+
+
+const rootReducer = combineReducers({
+  bitcoin: bitcoinReducer,
+  ethMonth: ethMonthReducer
+});
+
+export default rootReducer;
