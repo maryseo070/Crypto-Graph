@@ -4,8 +4,7 @@ import App from './App';
 
 const msp = state => {
   return {
-    bitcoin: state,
-    ethMonth: state
+    bitcoin: state
   };
 };
 

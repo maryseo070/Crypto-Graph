@@ -10,9 +10,10 @@ class App extends Component {
   }
 
   render() {
+    let bit = this.props.bitcoin
     return (
       <div>
-        {this.props.bitcoin.BTC}
+        {bit.USD}
         <ETHMonthContainer />
       </div>
     )

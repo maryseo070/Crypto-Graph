@@ -11,21 +11,21 @@ export const receiveBitcoinPrice = (btc) => {
 
 export const fetchBitcoinPrice = () => dispatch => {
   return ApiUtil.getBitcoin().then(
-    price => dispatch(receiveBitcoinPrice(price))
+    btc => dispatch(receiveBitcoinPrice(btc))
   );
 };
 
 
-export const receiveETHMonth = price => {
+export const receiveETHMonth = (eth) => {
   return {
     type: RECEIVE_ETH_MONTH,
-    price
+    eth
   };
 };
 
 //daily for 31 days
-export const fetchETHMonth = etc => dispatch => {
+export const fetchETHMonth = () => dispatch => {
   return ApiUtil.getETHMonth().then(
-    eth => dispatch(receiveETHMonth(etc))
+    eth => dispatch(receiveETHMonth(eth))
   );
 };

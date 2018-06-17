@@ -4,7 +4,7 @@ import ETHMonth from './eth_month';
 
 const msp = state => {
   return {
-    eth: state
+    eth: state.ethMonth
   };
 };
 

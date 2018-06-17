@@ -11,7 +11,7 @@ class ETHMonth extends Component {
       <div>
         ETH month section
       </div>
-    )
+    );
   }
 }
 

@@ -7,7 +7,7 @@ export const bitcoinReducer = (state = {}, action) => {
   Object.freeze(state);
   switch(action.type){
     case RECEIVE_BIT:
-      return action.btc;
+      return action.btc.BTC;
     default:
       return state;
   }
@@ -15,9 +15,10 @@ export const bitcoinReducer = (state = {}, action) => {
 
 export const ethMonthReducer = (state = {}, action) => {
   Object.freeze(state);
+  debugger
   switch(action.type){
     case RECEIVE_ETH_MONTH:
-      return action.eth;
+      return action.eth.Data;
     default:
       return state;
   }
