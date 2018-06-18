@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import PropTypes from 'prop-types';
 import ETHMonthContainer from './components/month/eth_month_container';
-
+import Dimensions from 'react-dimensions';
 class App extends Component {
 
   componentDidMount() {
@@ -10,11 +10,13 @@ class App extends Component {
   }
 
   render() {
-    let bit = this.props.bitcoin
+
+
+    let bit = this.props.bitcoin;
     return (
       <div>
         {bit.USD}
-        <ETHMonthContainer />
+          <ETHMonthContainer />
       </div>
     )
   }
@@ -30,4 +32,4 @@ App.defaultProps = {
 };
 
 
-export default App;
+export default Dimensions()(App);

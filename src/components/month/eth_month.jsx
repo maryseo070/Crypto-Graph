@@ -1,11 +1,22 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import * as d3 from "d3";
-
+import PieChart from './PieChart.jsx';
 
 class ETHMonth extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      data: [
+      { label: '<5', value: 2704659 },
+      { label: '5-13', value: 4499890 },
+      { label: '14-17', value: 2159981 },
+      { label: '18-24', value: 3853788 },
+      { label: '25-44', value: 14106543 },
+      { label: '45-64', value: 8819342 },
+      { label: '≥65', value: 612463 },
+    ]
+  };
     this.showETHdata = this.showETHdata.bind(this);
   }
 
@@ -14,27 +25,18 @@ class ETHMonth extends Component {
   }
 
   showETHdata() {
-    // let eth = this.props.eth;
-    // if (eth.length > 0) {
-    //   return eth.map( (data, i) => (
-    //     <ul key={i}>
-    //       <li>{data.time}</li>
-    //       <li>{data.close}</li>
-    //       <li>{data.high}</li>
-    //       <li>{data.low}</li>
-    //       <li>{data.open}</li>
-    //     </ul>
-    //   ));
-    // }
-
-    var svg = d3.select("body").append("svg")
-      .attr("height", 200)
-      .attr("width", 200);
-    var circles = d3.selectAll("circle")
-      .data({"x_axis": 30, "y_axis": 30, "radius": 20, "color" : "green"});
-
-    return circles;
-
+    const containerWidth = '200px';
+    const containerHeight = "200px";
+    const data = this.state.data;
+    return (
+      <div>
+        <PieChart
+          data={data}
+          width={containerWidth}
+          height={containerHeight}
+        />
+      </div>
+    );
   }
 
   render() {
