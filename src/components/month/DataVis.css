@@ -1,13 +1,15 @@
 .axis path,
-.axis line,
-.x-axis {
+.axis line {
   fill: none;
-  stroke: #000;
+  stroke: black;
   shape-rendering: crispEdges;
+}
+.x-axis{
+  stroke: #000;
 }
 
 .line {
-  fill: none;
+  fill: black;
   stroke: steelblue;
   stroke-width: 1.5px;
 }

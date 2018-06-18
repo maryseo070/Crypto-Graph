@@ -37,7 +37,7 @@ class ETHMonth extends Component {
     const containerWidth = '200px';
     const containerHeight = "200px";
     const data = this.state.data;
-    const data2 = this.state.datavis;
+    const datavis = this.state.datavis;
     return (
       <div className="wrapper-div">
         <PieChart
@@ -46,7 +46,7 @@ class ETHMonth extends Component {
           height={containerHeight}
         />
         <DataVis
-          data={data2}
+          data={datavis}
           width={containerWidth}
           height={containerHeight}
           />

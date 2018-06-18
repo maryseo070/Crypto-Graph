@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 // import { axis } from 'd3-axis';
 import './DataVis.css';
 import * as d3 from 'd3';
@@ -21,35 +21,57 @@ const y = scaleLinear()
   .domain([0, 6])
   .range([height, 0]);
 
-const xAxis = axisBottom(x);
+const xAxis = axisBottom();
 
-const yAxis = axisLeft(y);
+const yAxis = axisLeft()
+  .ticks(5)
+  .tickPadding(5);
+
   // .scale(y);
 
-const connectingLine = line()
+const connectingLine = line();
   // .interpolate("monotone")
-  .x(function(d) { return x(d[0]); })
-  .y(function(d) { return y(d[1]); });
+  // .x(function(d) { return x(d[0]); })
+  // .y(function(d) { return y(d[1]); });
 
 
 
 
 
-const DataVis = ({ data, w, h }) => {
-  return(
-    <svg
-       width={width}
-       height={height}
-       viewBox={`0 0 ${size} ${size}`}
-       tranform={`translate(${margin.left}, ${margin.top})`}>
-       <g
+class DataVis extends Component {
+  componentDidMount() {
+    select("#x-axis")
+      .call(
+        axisBottom(x)
+      );
+    select("#y-axis")
+      .call(
+        axisLeft(y)
+      );
+    // select("#line")
+    //   .call(connectingLine());
+  }
+
+
+  render () {
+    return(
+      <svg
+        width={width}
+        height={height}
+        viewBox={`0 0 ${size} ${size}`}
+        tranform={`translate(${margin.left}, ${margin.top})`}>
+        <g
           className="x-axis"
-          tranform={`translate(0, ${height})`}>
-          {axisBottom(x)}
+          transform={`translate(0, ${height})`}>
         </g>
-     </svg>
+        <g
+          className="y-axis">
+        </g>
 
-  );
+      </svg>
+
+    );
+  }
   // return(
   //   <svg
   //     width={width}
