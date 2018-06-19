@@ -15,10 +15,10 @@ class App extends Component {
     let bit = this.props.bitcoin;
     return (
       <div>
-        {bit.USD}
-          <ETHMonthContainer />
+        <ETHMonthContainer />
+          <div id="graphic"></div>
       </div>
-    )
+    );
   }
 }
 
