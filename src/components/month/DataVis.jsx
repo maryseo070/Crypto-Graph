@@ -8,10 +8,10 @@ import { line } from 'd3-shape';
 import { select } from 'd3-selection';
 import * as d3Axis from 'd3-axis';
 
-const size = 500;
+const size = 700;
 const margin = { top: 20, right: 30, bottom: 30, left: 40 };
 const width = 960 - margin.left - margin.right;
-const height = 500 - margin.top - margin.bottom;
+const height = 650 - margin.top - margin.bottom;
 
 const x = scaleTime()
   .domain([new Date(2001, 0, 1)], new Date(2006, 0, 1))
@@ -21,7 +21,7 @@ const y = scaleLinear()
   .domain([0, 6])
   .range([height, 0]);
 
-const xAxis = axisBottom()
+const xAxis = axisBottom();
 
 const yAxis = axisLeft()
   .ticks(5, "s")
@@ -34,7 +34,7 @@ const connectingLine = line()
   .x(function(d) { return x(d[0]); })
   .y(function(d) { return y(d[1]); });
 
-const style = {opacity: 1, stroke: "black"}
+const style = {opacity: 1, stroke: "black"};
 
 
 class DataVis extends Component {
@@ -46,11 +46,11 @@ class DataVis extends Component {
   componentDidMount() {
     select("#x-axis")
       .call(
-        axisBottom(x).tickValues([1,2,3,4,5]).tickPadding([6])
+        axisBottom(x)
       );
     select("#y-axis")
       .call(
-        axisLeft(y).tickValues([1,23,4,4,5,6,7,8])
+        axisLeft(y)
       );
     // select("#line")
     //   .call(connectingLine());
@@ -58,11 +58,15 @@ class DataVis extends Component {
 
   renderYTicks() {
     // let dataReversed = this.props.data.reverse();
+    // TODO: re-distribute ticks
+
+
+    let section = (height) / this.props.data.length;
     return this.props.data.map( (el, i) => (
       (
         <g className="tick"
           key={i}
-          transform={`translate(-10, ${(height / this.props.data.length) * i})`}>
+          transform={`translate(-10, ${section * i + 30})`}>
           <line x1="15" y1="-3" x2="5" y2="-3" style={style}></line>
           <text>{el[1]}</text>
         </g>
@@ -71,12 +75,13 @@ class DataVis extends Component {
   }
 
   renderXTicks() {
+    let section = (width) / this.props.data.length;
+
     return this.props.data.map( (el, i) => (
     (
-      <g className="tick"
+      <g className="tickX"
         key={i}
-        tranform={`translate(${(width / 6) * i})`}
-        style={{opacity: 1}}>
+        transform={`translate(${section * i + 30}, 35)`}>
         <line y2="6" x2="0"></line>
         <text dy=".71em" y="9" x="0">{Date.parse(el[0])}</text>
       </g>
