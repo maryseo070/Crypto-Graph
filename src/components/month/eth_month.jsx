@@ -39,7 +39,7 @@ class ETHMonth extends Component {
     const data = this.state.data;
     const datavis = this.state.datavis;
     return (
-      <div className="wrapper-div">
+      <div>
         <PieChart
           data={data}
           width={containerWidth}

@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import './DataVis.css';
 import * as d3 from 'd3';
 import { scaleLinear,scaleTime } from 'd3-scale';
-import { axisBottom, axisLeft } from 'd3-axis';
+import { ticks, axisBottom, axisLeft } from 'd3-axis';
 import { line } from 'd3-shape';
 import { select } from 'd3-selection';
 import * as d3Axis from 'd3-axis';
@@ -21,35 +21,51 @@ const y = scaleLinear()
   .domain([0, 6])
   .range([height, 0]);
 
-const xAxis = axisBottom();
+const xAxis = axisBottom()
 
 const yAxis = axisLeft()
-  .ticks(5)
+  .ticks(5, "s")
   .tickPadding(5);
 
   // .scale(y);
 
-const connectingLine = line();
+const connectingLine = line()
   // .interpolate("monotone")
-  // .x(function(d) { return x(d[0]); })
-  // .y(function(d) { return y(d[1]); });
+  .x(function(d) { return x(d[0]); })
+  .y(function(d) { return y(d[1]); });
 
-
-
+const style = {opacity: 1, stroke: "black"}
 
 
 class DataVis extends Component {
+  constructor(props){
+    super(props);
+    this.renderTicks = this.renderTicks.bind(this);
+  }
   componentDidMount() {
     select("#x-axis")
       .call(
-        axisBottom(x)
+        axisBottom(x).tickValues([1,2,3,4,5]).tickPadding([6])
       );
     select("#y-axis")
       .call(
-        axisLeft(y)
+        axisLeft(y).tickValues([1,23,4,4,5,6,7,8])
       );
     // select("#line")
     //   .call(connectingLine());
+  }
+
+  renderTicks() {
+    return this.props.data.map( (el, i) => (
+      (
+        <g className="tick"
+          key={i}
+          transform={`translate(-10, ${(height / this.props.data.length) * i})`}>
+          <line x1="20" y1="5" x2="-4" y2="5" style={style}></line>
+          <text>{i}</text>
+        </g>
+      )
+    ));
   }
 
 
@@ -63,11 +79,19 @@ class DataVis extends Component {
         <g
           className="x-axis"
           transform={`translate(0, ${height})`}>
+          <path stroke="#000" d={`M 0, 0 L ${width}, 0`}></path>
+          <g className="tick"
+            tranform="translate(177.9, 0)"
+            style={{opacity: 1}}>
+            <line y2="6" x2="0"></line>
+            <text dy=".71em" y="9" x="0">2001</text>
+          </g>
         </g>
         <g
           className="y-axis">
+          <path stroke="#000" d={`M 0, 30 L 0, ${height}`}></path>
+          {this.renderTicks()}
         </g>
-
       </svg>
 
     );
