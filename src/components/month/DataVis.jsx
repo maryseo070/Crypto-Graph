@@ -40,7 +40,8 @@ const style = {opacity: 1, stroke: "black"}
 class DataVis extends Component {
   constructor(props){
     super(props);
-    this.renderTicks = this.renderTicks.bind(this);
+    this.renderYTicks = this.renderYTicks.bind(this);
+    this.renderXTicks = this.renderXTicks.bind(this);
   }
   componentDidMount() {
     select("#x-axis")
@@ -55,16 +56,31 @@ class DataVis extends Component {
     //   .call(connectingLine());
   }
 
-  renderTicks() {
+  renderYTicks() {
+    // let dataReversed = this.props.data.reverse();
     return this.props.data.map( (el, i) => (
       (
         <g className="tick"
           key={i}
           transform={`translate(-10, ${(height / this.props.data.length) * i})`}>
-          <line x1="20" y1="5" x2="-4" y2="5" style={style}></line>
-          <text>{i}</text>
+          <line x1="15" y1="-3" x2="5" y2="-3" style={style}></line>
+          <text>{el[1]}</text>
         </g>
       )
+    ));
+  }
+
+  renderXTicks() {
+    return this.props.data.map( (el, i) => (
+    (
+      <g className="tick"
+        key={i}
+        tranform={`translate(${(width / 6) * i})`}
+        style={{opacity: 1}}>
+        <line y2="6" x2="0"></line>
+        <text dy=".71em" y="9" x="0">{Date.parse(el[0])}</text>
+      </g>
+    )
     ));
   }
 
@@ -80,18 +96,21 @@ class DataVis extends Component {
           className="x-axis"
           transform={`translate(0, ${height})`}>
           <path stroke="#000" d={`M 0, 0 L ${width}, 0`}></path>
-          <g className="tick"
-            tranform="translate(177.9, 0)"
-            style={{opacity: 1}}>
-            <line y2="6" x2="0"></line>
-            <text dy=".71em" y="9" x="0">2001</text>
-          </g>
+          {this.renderXTicks()}
         </g>
         <g
           className="y-axis">
           <path stroke="#000" d={`M 0, 30 L 0, ${height}`}></path>
-          {this.renderTicks()}
+          {this.renderYTicks()}
         </g>
+        <circle
+              className="dot"
+              cx={100}
+              cy={100}
+              r="3.5"
+              >
+        </circle>
+
       </svg>
 
     );
