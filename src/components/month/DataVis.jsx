@@ -11,31 +11,29 @@ const margin = { top: 20, right: 30, bottom: 30, left: 40 };
 const width = 1000 - margin.left - margin.right;
 const height = 650 - margin.top - margin.bottom;
 
-const msp = state => {
-  return {
-    eth: state.ethMonth
-  };
-};
-
-const mdp = dispatch => {
-  return {
-    fetchETHMonth: () => dispatch(fetchETHMonth())
-  };
-};
-
-
-
 class DataVis extends Component {
   constructor(props){
     super(props);
+    this.state = {
+      ethDay: this.props.ethDay,
+      ethMonth: this.props.ethMonth
+    }
     this.props.fetchETHMonth();
+    this.props.fetchETHDay();
     this.renderDataDots = this.renderDataDots.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
+
   componentDidMount() {
   }
 
+  handleClick(data) {
+
+    console.log(data)
+  }
+
   renderDataDots() {
-    return this.props.eth.map( (point, index) => (
+    return this.props.ethMonth.map( (point, index) => (
       <circle
             className="dot"
             cx={point[0]}
@@ -48,6 +46,8 @@ class DataVis extends Component {
 
   render () {
     return(
+      <div className="wrapper-div">
+        <input type="button" name="data" value="ETH Day Data" onClick={() => this.handleClick(this.props.ethDay)} />
       <svg
         width={width}
         height={height}
@@ -55,25 +55,28 @@ class DataVis extends Component {
         viewBox={`0 0 ${size} ${size}`}
         tranform={`translate(${margin.left}, ${margin.top})`}>
         <AxisX
-          data={this.props.eth}
+          data={this.props.ethMonth}
           height={height}
           width={width}/>
         <AxisY
-          data={this.props.eth}
+          data={this.props.ethMonth}
           height={height}
           margin={margin}
           width={width}/>
         <Line
-          data={this.props.eth}
+          data={this.props.ethMonth}
           height={height}
           margin={margin}
           width={width}/>
 
       </svg>
+    </div>
     );
   }
 }
-export default connect(msp, mdp)(DataVis);
+
+export default DataVis;
+
 DataVis.propType = {
   data: PropTypes.array
 };

@@ -2,19 +2,14 @@ import React, { Component } from 'react';
 import './App.css';
 import PropTypes from 'prop-types';
 import Dimensions from 'react-dimensions';
-import DataVis from './components/month/DataVis.jsx';
+import DataVisContainer from './components/month/DataVis_container.js';
 
 class App extends Component {
-
-  componentDidMount() {
-    this.props.fetchBitcoinPrice();
-  }
-
   render() {
 
     return (
       <div>
-        <DataVis />
+        <DataVisContainer />
       </div>
     );
   }

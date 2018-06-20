@@ -23,3 +23,9 @@ body {
   stroke: steelblue;
   stroke-width: 1.5px;
 }
+
+.wrapper-div{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
