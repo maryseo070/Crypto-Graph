@@ -7,10 +7,22 @@ import * as d3 from 'd3';
 
 export const AxisX = ({data, width, height}) => {
   // var data = this.props.data;
+  let dates = [];
+  if (Array.isArray(data)) {
+    data.forEach( element => {
+      let newDate = new Date(element.time);
+      dates.push(newDate.getDate());
+    });
+  }
+
+  function dateString(object) {
+    let date = new Date(parseInt(object.time.toString() + "000"));
+    return date;
+  }
 
   var x = scaleTime()
   .range([0, width])
-  .domain(d3.extent(data, function(d) { return d.time; }));
+  .domain(d3.extent(data, function(d) { return dateString(d); }));
 
   var xAxis = axisBottom(x);
   // x.domain(d3.extent(data, function(d) { return d[1]; }));

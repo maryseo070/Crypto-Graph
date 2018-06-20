@@ -14,18 +14,23 @@ export const Line = ({data, height, width}) => {
           .range([height, 0]);
 
   var l = line()
-    .x(function(d) { return x(d[0]); })
-    .y(function(d) { return y(d[1]); });
+    .x(function(d) { return x(d.time); })
+    .y(function(d) { return y(d.open); });
+
+  function dateString(object) {
+    let date = new Date(parseInt(object.time.toString() + "000"));
+    return date;
+  }
 
   if (Array.isArray(data)) {
     data.forEach(function(d) {
-      x.domain(d3.extent(data, function(d) { return d[0]; }));
-      y.domain(d3.extent(data, function(d) { return d[1]; }));
+      x.domain(d3.extent(data, function(d) { return d.time; }));
+      y.domain(d3.extent(data, function(d) { return d.open; }));
     });
   }
 
   var newline = l(data);
-  console.log(newline);
+  // console.log(newline);
 
   return(
     <path className="line" d={newline}></path>
