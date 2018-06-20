@@ -1,18 +1,25 @@
-import { fetchETHMonth, fetchETHDay } from './../../actions/api_actions.js';
+import { fetchETHMonth,
+          fetchETHDay,
+          fetchETHWeek,
+          fetchETHYear } from './../../actions/api_actions.js';
 import DataVis from './DataVis.jsx';
 import { connect } from 'react-redux';
 
 const msp = state => {
   return {
     ethMonth: state.ethMonth,
-    ethDay: state.ethDay
+    ethDay: state.ethDay,
+    ethWeek: state.ethWeek,
+    ethYear: state.ethYear
   };
 };
 
 const mdp = dispatch => {
   return {
     fetchETHMonth: () => dispatch(fetchETHMonth()),
-    fetchETHDay: () => dispatch(fetchETHDay())
+    fetchETHDay: () => dispatch(fetchETHDay()),
+    fetchETHWeek: () => dispatch(fetchETHWeek()),
+    fetchETHYear: () => dispatch(fetchETHYear())
   };
 };
 

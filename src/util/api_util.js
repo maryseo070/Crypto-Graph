@@ -35,8 +35,33 @@ export const getETHDay = () => {
       return day;
     },
     error() {
-      console.log('could not retrieve day data in util')
+      console.log('could not retrieve day data in util');
     }
-  })
-}
-// https://min-api.cryptocompare.com/data/histoday?fsym=ETH&tsym=USD&limit=10
+  });
+};
+
+export const getETHWeek = () => {
+  return $.ajax({
+    type: "GET",
+    url: "https://min-api.cryptocompare.com/data/histoday?fsym=ETH&tsym=USD&limit=10",
+    success(week) {
+      return week;
+    },
+    error() {
+      console.log('could not retrieve week data in util');
+    }
+  });
+};
+
+export const getETHYear = () => {
+  return $.ajax({
+    type: "GET",
+    url: "https://min-api.cryptocompare.com/data/histoday?fsym=BTC&tsym=USD&limit=365",
+    success(year) {
+      return year;
+    },
+    error() {
+      console.log('could not retrieve year data in util');
+    }
+  });
+};

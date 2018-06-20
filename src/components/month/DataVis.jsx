@@ -3,7 +3,6 @@ import './DataVis.css';
 import { AxisX, AxisY } from './Axis.jsx';
 import { Line } from './line.jsx';
 import PropTypes from 'prop-types';
-import { fetchETHMonth } from './../../actions/api_actions';
 import { connect } from 'react-redux';
 
 const size = 700;
@@ -19,6 +18,8 @@ class DataVis extends Component {
       data: this.props.ethMonth
     };
     this.props.fetchETHDay();
+    this.props.fetchETHWeek();
+    this.props.fetchETHYear();
     this.renderDataDots = this.renderDataDots.bind(this);
     this.handleClick = this.handleClick.bind(this);
   }
@@ -28,9 +29,9 @@ class DataVis extends Component {
       () => this.setState({data: this.props.ethMonth}))
   }
 
-  handleClick(data) {
+  handleClick(prop) {
     return (e) => (
-      this.setState({data: this.props.ethDay})
+      this.setState({data: prop})
     );
   }
 
@@ -49,7 +50,10 @@ class DataVis extends Component {
   render () {
     return(
       <div className="wrapper-div">
-        <button value={this.state.data} onClick={this.handleClick()}>ETH DAY</button>
+        <button value={this.state.data} onClick={this.handleClick(this.props.ethDay)}>ETH DAY</button>
+        <button value={this.state.data} onClick={this.handleClick(this.props.ethMonth)}>ETH MONTH</button>
+        <button value={this.state.data} onClick={this.handleClick(this.props.ethWeek)}>ETH WEEK</button>
+        <button value={this.state.data} onClick={this.handleClick(this.props.ethYear)}>ETH YEAR</button>
       <svg
         width={width}
         height={height}
