@@ -1,16 +1,20 @@
 import { connect } from 'react-redux';
-import { fetchBitcoinPrice } from './actions/api_actions';
+import { fetchBitcoinPrice,
+          fetchETHMonth,
+          fetchETHDay } from './actions/api_actions';
 import App from './App';
 
 const msp = state => {
   return {
-    bitcoin: state.bitcoin
+    bitcoin: state.bitcoin,
+    ethMonth: state.ethMonth
   };
 };
 
 const mdp = dispatch => {
   return {
-    fetchBitcoinPrice: () => dispatch(fetchBitcoinPrice())
+    fetchBitcoinPrice: () => dispatch(fetchBitcoinPrice()),
+    fetchETHMonth: () => dispatch(fetchETHMonth())
   };
 };
 

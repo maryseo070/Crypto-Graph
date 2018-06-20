@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
 import PropTypes from 'prop-types';
-import ETHMonthContainer from './components/month/eth_month_container';
 import Dimensions from 'react-dimensions';
+import DataVis from './components/month/DataVis.jsx';
+
 class App extends Component {
 
   componentDidMount() {
@@ -13,8 +14,7 @@ class App extends Component {
 
     return (
       <div>
-        <ETHMonthContainer />
-          <div id="graphic"></div>
+        <DataVis />
       </div>
     );
   }

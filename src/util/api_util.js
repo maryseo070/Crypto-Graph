@@ -26,3 +26,16 @@ export const getETHMonth = () => {
     },
   });
 };
+
+export const getETHDay = () => {
+  return $.ajax({
+    type: "GET",
+    url: "https://min-api.cryptocompare.com/data/histoday?fsym=ETH&tsym=USD&limit=10",
+    success(day){
+      return day;
+    },
+    error() {
+      console.log('could not retrieve day data in util')
+    }
+  })
+}
