@@ -14,22 +14,24 @@ const height = 650 - margin.top - margin.bottom;
 class DataVis extends Component {
   constructor(props){
     super(props);
+
     this.state = {
-      ethDay: this.props.ethDay,
-      ethMonth: this.props.ethMonth
-    }
-    this.props.fetchETHMonth();
+      data: this.props.ethMonth
+    };
     this.props.fetchETHDay();
     this.renderDataDots = this.renderDataDots.bind(this);
     this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidMount() {
+    this.props.fetchETHMonth().then(
+      () => this.setState({data: this.props.ethMonth}))
   }
 
   handleClick(data) {
-
-    console.log(data)
+    return (e) => (
+      this.setState({data: this.props.ethDay})
+    );
   }
 
   renderDataDots() {
@@ -47,7 +49,7 @@ class DataVis extends Component {
   render () {
     return(
       <div className="wrapper-div">
-        <input type="button" name="data" value="ETH Day Data" onClick={() => this.handleClick(this.props.ethDay)} />
+        <button value={this.state.data} onClick={this.handleClick()}>ETH DAY</button>
       <svg
         width={width}
         height={height}
@@ -55,16 +57,16 @@ class DataVis extends Component {
         viewBox={`0 0 ${size} ${size}`}
         tranform={`translate(${margin.left}, ${margin.top})`}>
         <AxisX
-          data={this.props.ethMonth}
+          data={this.state.data}
           height={height}
           width={width}/>
         <AxisY
-          data={this.props.ethMonth}
+          data={this.state.data}
           height={height}
           margin={margin}
           width={width}/>
         <Line
-          data={this.props.ethMonth}
+          data={this.state.data}
           height={height}
           margin={margin}
           width={width}/>

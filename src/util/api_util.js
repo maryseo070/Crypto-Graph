@@ -30,7 +30,7 @@ export const getETHMonth = () => {
 export const getETHDay = () => {
   return $.ajax({
     type: "GET",
-    url: "https://min-api.cryptocompare.com/data/histoday?fsym=ETH&tsym=USD&limit=10",
+    url: "https://min-api.cryptocompare.com/data/histohour?fsym=ETH&tsym=USD&limit=24",
     success(day){
       return day;
     },
@@ -39,3 +39,4 @@ export const getETHDay = () => {
     }
   })
 }
+// https://min-api.cryptocompare.com/data/histoday?fsym=ETH&tsym=USD&limit=10
