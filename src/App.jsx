@@ -11,8 +11,6 @@ class App extends Component {
 
   render() {
 
-
-    let bit = this.props.bitcoin;
     return (
       <div>
         <ETHMonthContainer />

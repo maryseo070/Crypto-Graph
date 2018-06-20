@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './DataVis.css';
-import * as d3 from 'd3';
 import { AxisX, AxisY } from './Axis.jsx';
 import { Line } from './line.jsx';
 import PropTypes from 'prop-types';
@@ -12,10 +11,6 @@ const margin = { top: 20, right: 30, bottom: 30, left: 40 };
 const width = 1000 - margin.left - margin.right;
 const height = 650 - margin.top - margin.bottom;
 
-// const connectingLine = line()
-//   // .interpolate("monotone")
-//   .x(function(d) { return x(d[0]); })
-//   .y(function(d) { return y(d[1]); });
 const msp = state => {
   return {
     eth: state.ethMonth
