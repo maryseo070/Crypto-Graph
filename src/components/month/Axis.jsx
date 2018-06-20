@@ -10,10 +10,9 @@ export const AxisX = ({data, width, height}) => {
 
   var x = scaleTime()
   .range([0, width])
-  .domain(d3.extent(data, function(d) { return d[0]; }));
+  .domain(d3.extent(data, function(d) { return d.time; }));
 
   var xAxis = axisBottom(x);
-
   // x.domain(d3.extent(data, function(d) { return d[1]; }));
 
   d3.select(".x").attr("transform", "translate(0," + height + ")").call(xAxis);
@@ -31,7 +30,7 @@ export const AxisY = ({ data, width, height }) => {
 
   var yAxis = axisLeft(y);
 
-  y.domain(d3.extent(data, function(d) { return d[1]; }));
+  y.domain(d3.extent(data, function(d) { return d.open; }));
 
   d3.select(".y").call(yAxis)
     .append("text")

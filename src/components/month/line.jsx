@@ -3,7 +3,8 @@ import { scaleLinear,scaleTime } from 'd3-scale';
 import { ticks, axisBottom, axisLeft } from 'd3-axis';
 import { select } from 'd3-selection';
 import * as d3 from 'd3';
-import { line } from 'd3-shape';
+import { line, symbolCircle } from 'd3-shape';
+import PropTypes from 'prop-types';
 
 export const Line = ({data, height, width}) => {
   var x = scaleTime()
@@ -16,10 +17,12 @@ export const Line = ({data, height, width}) => {
     .x(function(d) { return x(d[0]); })
     .y(function(d) { return y(d[1]); });
 
-  data.forEach(function(d) {
-    x.domain(d3.extent(data, function(d) { return d[0]; }));
-    y.domain(d3.extent(data, function(d) { return d[1]; }));
-  });
+  if (Array.isArray(data)) {
+    data.forEach(function(d) {
+      x.domain(d3.extent(data, function(d) { return d[0]; }));
+      y.domain(d3.extent(data, function(d) { return d[1]; }));
+    });
+  }
 
   var newline = l(data);
   console.log(newline);
@@ -28,3 +31,33 @@ export const Line = ({data, height, width}) => {
     <path className="line" d={newline}></path>
   );
 };
+Line.propType = {
+  data: PropTypes.array
+};
+
+Line.defaultProps = {
+  data: []
+};
+
+//
+// export const Circle = ({data, height, width}) => {
+//   var x = scaleTime()
+//             .range([0, width]);
+//
+//   var y = scaleLinear()
+//           .range([height, 0]);
+//
+//   data.forEach(function(d) {
+//
+//   })
+//
+//   d3.select("circle")
+//     .data(data)
+//     .attr("r", 3)
+//     .attr("cx", d3.extent(data, function(d) { return d[0]; }))
+//     .attr("cy", d3.extent(data, function(d) { return d[1]; }));
+//
+//   return(
+//     <path className="circle" ></path>
+//   )
+// };

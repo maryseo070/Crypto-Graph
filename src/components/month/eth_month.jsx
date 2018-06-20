@@ -14,7 +14,9 @@ class ETHMonth extends Component {
       [new Date(2004, 0, 1), 3],
       [new Date(2005, 0, 1), 4],
       [new Date(2006, 0, 1), 5],
-      [new Date(2006, 0, 1), 6]
+      [new Date(2007, 0, 1), 6],
+      [new Date(2008, 0, 1), 6],
+      [new Date(2009, 0, 1), 6],
     ]
   };
     this.showETHdata = this.showETHdata.bind(this);
@@ -25,12 +27,13 @@ class ETHMonth extends Component {
   }
 
   showETHdata() {
-    const data = this.state.data;
     const datavis = this.state.datavis;
+    const ethData = this.props.eth;
+
     return (
       <div>
         <DataVis
-          data={datavis}
+          data={ethData}
           />
       </div>
     );
@@ -39,7 +42,7 @@ class ETHMonth extends Component {
   render() {
     return (
       <div>
-        {this.showETHdata()}
+        <DataVis />
       </div>
     );
   }

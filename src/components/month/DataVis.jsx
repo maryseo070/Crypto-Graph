@@ -1,36 +1,46 @@
 import React, { Component } from 'react';
-// import { axis } from 'd3-axis';
 import './DataVis.css';
 import * as d3 from 'd3';
-import { scaleLinear,scaleTime } from 'd3-scale';
-import { ticks, axisBottom, axisLeft } from 'd3-axis';
-import { line } from 'd3-shape';
-import { select } from 'd3-selection';
-import * as d3Axis from 'd3-axis';
 import { AxisX, AxisY } from './Axis.jsx';
-import { Line } from './line.jsx'
+import { Line } from './line.jsx';
+import PropTypes from 'prop-types';
+import { fetchETHMonth } from './../../actions/api_actions';
+import { connect } from 'react-redux';
 
 const size = 700;
 const margin = { top: 20, right: 30, bottom: 30, left: 40 };
-const width = 960 - margin.left - margin.right;
+const width = 1000 - margin.left - margin.right;
 const height = 650 - margin.top - margin.bottom;
 
 // const connectingLine = line()
 //   // .interpolate("monotone")
 //   .x(function(d) { return x(d[0]); })
 //   .y(function(d) { return y(d[1]); });
+const msp = state => {
+  return {
+    eth: state.ethMonth
+  };
+};
 
-const style = {opacity: 1, stroke: "black"};
+const mdp = dispatch => {
+  return {
+    fetchETHMonth: () => dispatch(fetchETHMonth())
+  };
+};
+
 
 
 class DataVis extends Component {
   constructor(props){
     super(props);
+    this.props.fetchETHMonth();
     this.renderDataDots = this.renderDataDots.bind(this);
+  }
+  componentDidMount() {
   }
 
   renderDataDots() {
-    return this.props.data.map( (point, index) => (
+    return this.props.eth.map( (point, index) => (
       <circle
             className="dot"
             cx={point[0]}
@@ -46,29 +56,35 @@ class DataVis extends Component {
       <svg
         width={width}
         height={height}
+        style={{padding: "40px"}}
         viewBox={`0 0 ${size} ${size}`}
         tranform={`translate(${margin.left}, ${margin.top})`}>
         <AxisX
-          data={this.props.data}
+          data={this.props.eth}
           height={height}
           width={width}/>
         <AxisY
-          data={this.props.data}
+          data={this.props.eth}
           height={height}
           margin={margin}
           width={width}/>
         <Line
-          data={this.props.data}
+          data={this.props.eth}
           height={height}
           margin={margin}
           width={width}/>
 
-        {this.renderDataDots()}
-
       </svg>
-
     );
   }
 }
+export default connect(msp, mdp)(DataVis);
+DataVis.propType = {
+  data: PropTypes.array
+};
 
-export default DataVis;
+DataVis.defaultProps = {
+  data: []
+};
+
+// export default DataVis;
