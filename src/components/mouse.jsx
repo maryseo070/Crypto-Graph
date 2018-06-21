@@ -85,12 +85,11 @@ class Mouse extends Component {
       let d0 = data[i - 1];
       let d1 = data[i];
       let d = x0 - d0.time > d1.time - x0 ? d1 : d0;
-      console.log(d);
       let day = dateString(d);
-      console.log(day);
       let parseDay = parseDate(day);
-      console.log(parseDay);
-      focus.attr("transform", "translate(" + x(parseDate(d.time)) + "," + y(d.open) + ")");
+      console.log(y(d.open))
+      focus.attr("transform", "translate(" + x(parseDate(d.time)) + "," + "0" + ")")
+      // focus.attr("transform", "translate(" + x(parseDate(d.time)) + "," + y(d.open) + ")");
       focus.select("text").text("Open:" + " " + formatCurrency(d.open) + " " + d.time);
     }
   }
