@@ -5,11 +5,11 @@ import { Line } from './line.jsx';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Mouse from './mouse.jsx';
+import $ from 'jquery';
 
-const size = 700;
 const margin = { top: 20, right: 30, bottom: 30, left: 40 };
-const width = 1000 - margin.left - margin.right;
-const height = 650 - margin.top - margin.bottom;
+const width = 1200 - margin.left - margin.right;
+const height = 800 - margin.top - margin.bottom;
 
 class DataVis extends Component {
   constructor(props){
@@ -26,7 +26,7 @@ class DataVis extends Component {
 
   componentDidMount() {
     this.props.fetchETHMonth().then(
-      () => this.setState({data: this.props.ethMonth}))
+      () => this.setState({data: this.props.ethMonth}));
   }
 
   handleClick(prop) {
@@ -36,17 +36,23 @@ class DataVis extends Component {
   }
 
   render () {
+
     return(
       <div className="wrapper-div">
-        <button onClick={this.handleClick(this.props.ethDay)}>ETH DAY</button>
-        <button onClick={this.handleClick(this.props.ethMonth)}>ETH MONTH</button>
-        <button onClick={this.handleClick(this.props.ethWeek)}>ETH WEEK</button>
-        <button onClick={this.handleClick(this.props.ethYear)}>ETH YEAR</button>
+        <h1 className="headers">Welcome to Crypto-Graph!</h1>
+        <h2 className="headers">Check the price history of Ethereum (ETH) from the past day, week, month, or year</h2>
+        <section className="button-section">
+          <button className="buttons" onClick={this.handleClick(this.props.ethDay)}>Day</button>
+          <button className="buttons" onClick={this.handleClick(this.props.ethWeek)}>Week</button>
+          <button className="buttons" onClick={this.handleClick(this.props.ethMonth)}>Month</button>
+          <button className="buttons" onClick={this.handleClick(this.props.ethYear)}>Year</button>
+        </section>
       <svg
+        className="svg"
+        viewBox={`200 0 ${height} 900`}
         width={width}
         height={height}
         style={{padding: "40px"}}
-        viewBox={`0 0 ${size} ${size}`}
         tranform={`translate(${margin.left}, ${margin.top})`}>
         <AxisX
           data={this.state.data}

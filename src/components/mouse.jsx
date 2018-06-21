@@ -45,12 +45,10 @@ class Mouse extends Component {
     if (Array.isArray(data)) {
       data.forEach(function(d) { time = parseDate(dateString(d.time)); })
     }
-    console.log(parseDate("24-Apr-07"));
   }
 
   mouseOut() {
     select(".focus").style("diplay", "none");
-    console.log(":Out");
   }
 
   mouseOver() {
@@ -84,16 +82,38 @@ class Mouse extends Component {
       let i = bisectDate(data, x0, 1);
       let d0 = data[i - 1];
       let d1 = data[i];
+      if (d1 === "undefined") {
+        d1 = d0;
+      }
+      console.log(d0)
+      console.log(d1)
       let d = x0 - d0.time > d1.time - x0 ? d1 : d0;
       let day = dateString(d);
       let parseDay = parseDate(day);
-      console.log(d);
-      console.log(d.open);
-
-      console.log(y(d.time))
       focus.attr("transform", "translate(" + x(parseDate(d.time)) + "," + y(d.open) + ")")
-      // focus.attr("transform", "translate(" + x(parseDate(d.time)) + "," + y(d.open) + ")");
-      focus.select("text").text("Open:" + " " + formatCurrency(d.open) + " " + d.time);
+      focus.select("text").text(
+        "Date: " + parseDay)
+      focus.select("text")
+        .append("tspan")
+        .text("Open: " + formatCurrency(d.open))
+        .attr("x", 9)
+        .attr("y", 30)
+      focus.select("text")
+        .append("tspan")
+        .text("Close: " + formatCurrency(d.close))
+        .attr("x", 9)
+        .attr("y", 50)
+      focus.select("text")
+        .append("tspan")
+        .text("High: " + formatCurrency(d.high))
+        .attr("x", 9)
+        .attr("y", 70)
+      focus.select("text")
+        .append("tspan")
+        .text("Low: " + formatCurrency(d.low))
+        .attr("x", 9)
+        .attr("y", 90)
+
     }
   }
 
@@ -101,7 +121,7 @@ class Mouse extends Component {
     return (
       <g>
         <g className="focus" style={focusStyle}>
-          <circle r="7"></circle>
+          <circle r="7" className="circle-mouse"></circle>
           <text x="9" dy=".35em"></text>
         </g>
         <rect

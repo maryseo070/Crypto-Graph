@@ -2,6 +2,7 @@ import React from 'react';
 import { scaleLinear,scaleTime } from 'd3-scale';
 import { axisBottom, axisLeft } from 'd3-axis';
 import * as d3 from 'd3';
+import { select } from 'd3-selection';
 
 export const AxisX = ({data, width, height}) => {
   // var data = this.props.data;
@@ -21,8 +22,15 @@ export const AxisX = ({data, width, height}) => {
 
   d3.select(".x").attr("transform", "translate(0," + height + ")").call(xAxis);
 
+  let g = d3.select(".g");
+  g.select("text")
+    .attr("class", "axis-title")
+    // .text("hello")
+    .attr("transform", "translate(500, -50)");
+
   return(
-    <g className="x axis"></g>
+      <g className="x axis">
+      </g>
   );
 };
 

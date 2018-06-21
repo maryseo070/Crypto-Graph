@@ -3,6 +3,7 @@ import { scaleLinear,scaleTime } from 'd3-scale';
 import * as d3 from 'd3';
 import { line } from 'd3-shape';
 import PropTypes from 'prop-types';
+import { select } from 'd3-selection';
 
 export const Line = ({data, height, width}) => {
   var x = scaleTime()
@@ -20,10 +21,10 @@ export const Line = ({data, height, width}) => {
       x.domain(d3.extent(data, function(d) { return d.time; }));
       y.domain(d3.extent(data, function(d) { return d.open; }));
     });
+
   }
 
   var newline = l(data);
-  // console.log(newline);
 
   return(
     <path className="line" d={newline}></path>

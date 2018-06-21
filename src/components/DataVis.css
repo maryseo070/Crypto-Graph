@@ -1,22 +1,52 @@
 
 body {
-  font: 10px sans-serif;
+  font-family: American Typewriter, serif;
+  font-size: 20px;
 }
 .axis path,
 .axis line {
   fill: none;
   stroke: black;
   shape-rendering: crispEdges;
+  stroke-dasharray: 2000;
+  stroke-dashoffset: 2000;
+  animation: dash 5s linear forwards;
+}
+
+.axis-title{
+  font-size: 24px;
+  color: black;
+}
+h1 {
+  font-size: 40px;
+}
+h2{
+  font-size: 30px;
 }
 .x-axis{
   stroke: #000;
 }
 
+.x{
+  font-size: 15px;
+}
+.y{
+  font-size: 15px;
+}
+@keyframes dash {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
 .line {
   fill: none;
-  stroke: steelblue;
-  stroke-width: 1.5px;
+  stroke: green;
+  stroke-width: 3px;
+  stroke-dasharray: 6000;
+  stroke-dashoffset: 6000;
+  animation: dash 7s linear forwards;
 }
+
 
 .dot {
   fill: white;
@@ -28,4 +58,34 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.button-section{
+  display: flex;
+  flex-direction: row;
+}
+
+.buttons{
+  font-family: American Typewriter, serif;
+  padding: 10px;
+  border-radius: 4px;
+  margin: 20px;
+  outline: none;
+}
+.buttons:hover{
+  font-weight: bold;
+
+  /* padding-left: 15px; */
+  /* padding-right: 15px; */
+  transition: 0.5s;
+}
+
+button:focus {
+  outline: 0;
+  font-weight: bold;
+  /* padding-left: 25px; */
+}
+
+.headers{
+  font-weight: normal;
 }

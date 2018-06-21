@@ -1,14 +1,3 @@
-.mouse-line{
-  stroke: "black";
-  stroke-width: 1px;
-  opacity: 0;
-}
-
-.mouse-circle {
-  fill: none;
-  stroke-width: 1px;
-  opacity: 0;
-}
 
 .svg-rect{
   fill: none;
@@ -17,9 +6,10 @@
 .overlay {
    fill: none;
    pointer-events: all;
+   padding-right: 200px;
  }
 
  .focus circle {
    fill: none;
-   stroke: steelblue;
+   stroke: orange;
  }

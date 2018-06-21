@@ -4,15 +4,12 @@ import PropTypes from 'prop-types';
 import Dimensions from 'react-dimensions';
 import DataVisContainer from './components/DataVis_container.js';
 
-class App extends Component {
-  render() {
-
-    return (
-      <div>
-        <DataVisContainer />
-      </div>
-    );
-  }
+export const App = () => {
+  return (
+    <div>
+      <DataVisContainer />
+    </div>
+  );
 }
 
 App.propType = {
