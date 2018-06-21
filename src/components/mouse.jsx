@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './mouse.css';
-import { select, mouse, event } from 'd3-selection';
+import { select, clientPoint, mouse, event } from 'd3-selection';
 import * as d3 from 'd3';
 import { scaleTime, scaleLinear } from 'd3-scale';
 import { bisector } from 'd3-array';
@@ -38,11 +38,11 @@ class Mouse extends Component {
 
   mouseOver() {
     select(".focus").style("display", null);
-    console.log("OVER");
+    // console.log("OVER");
   }
 
   mousemove() {
-    console.log("moving!");
+    // console.log("moving!");
     let data = this.props.data;
     let width = this.props.width;
     let height = this.props.height;
@@ -54,16 +54,23 @@ class Mouse extends Component {
     let y = scaleLinear()
       .range([height, 0]);
 
-    if (data.length === 0 || Object.keys(data).length === 0) {
+    if (Object.keys(data).length === 0 || event === null) {
       console.log("ZERO DATA");
     } else {
-      console.log(event);
-      console.log("NOT ZERO DATA");
+      // console.log("NOT ZERO DATA");
       x.domain([data[0].time, data[data.length - 1].time]);
       y.domain([d3.extent(data, function(d) {return d.open; })]);
 
       let overlay = select('.overlay').node();
-      let x0 = x.invert(mouse(overlay)[0]);
+      console.log(x);
+      console.log(x.domain);
+
+      console.log(event)
+      console.log(clientPoint(overlay, event));
+      console.log(x.invert(clientPoint(overlay, event)[0]))
+
+      let x0 = x.invert(clientPoint(overlay, event)[0]);
+
       let i = bisectDate(data, x0, 1);
       let d0 = data[i - 1];
       let d1 = data[i];
