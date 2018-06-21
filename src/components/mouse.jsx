@@ -5,10 +5,21 @@ import * as d3 from 'd3';
 import { scaleTime, scaleLinear } from 'd3-scale';
 import { bisector } from 'd3-array';
 import { format } from 'd3-format';
+import { timeFormat, timeParse } from 'd3-time-format';
 
 var focusStyle = {
   display: "none"
 };
+
+function parseDate(date) {
+  let time = timeParse("%x");
+  return timeParse(date);
+}
+
+function dateString(object) {
+  let time = new Date(parseInt(object.time.toString() + "000"));
+  return time.toLocaleDateString();
+}
 
 var bisectDate = bisector(function(d) { return d.time; }).left;
 var formatValue = format(",.2f");
@@ -26,9 +37,15 @@ class Mouse extends Component {
   }
 
   componentDidMount() {
+    let data = this.props.data;
     let _this = this;
     select('.overlay').on("mousemove", _this.mousemove);
     this.setState({data: this.props.data});
+    let time;
+    if (Array.isArray(data)) {
+      data.forEach(function(d) { time = parseDate(dateString(d.time)); })
+    }
+    console.log(parseDate("24-Apr-07"));
   }
 
   mouseOut() {
@@ -62,22 +79,19 @@ class Mouse extends Component {
       y.domain([d3.extent(data, function(d) {return d.open; })]);
 
       let overlay = select('.overlay').node();
-      console.log(x);
-      console.log(x.domain);
-
-      console.log(event)
-      console.log(clientPoint(overlay, event));
-      console.log(x.invert(clientPoint(overlay, event)[0]))
-
       let x0 = x.invert(clientPoint(overlay, event)[0]);
 
       let i = bisectDate(data, x0, 1);
       let d0 = data[i - 1];
       let d1 = data[i];
       let d = x0 - d0.time > d1.time - x0 ? d1 : d0;
-      focus.attr("transform", "translate(" + x(d.time) + "," + y(d.open) + ")");
-      focus.select("text").text(formatCurrency(d.open) + " " + d.time);
-
+      console.log(d);
+      let day = dateString(d);
+      console.log(day);
+      let parseDay = parseDate(day);
+      console.log(parseDay);
+      focus.attr("transform", "translate(" + x(parseDate(d.time)) + "," + y(d.open) + ")");
+      focus.select("text").text("Open:" + " " + formatCurrency(d.open) + " " + d.time);
     }
   }
 
