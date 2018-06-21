@@ -14,13 +14,6 @@
   fill: none;
   pointer-events: all;
 }
-
-.mouse-over-effects {
-  height: 200px;
-  width: 200px;
-  background-color: pink;
-}
-
 .overlay {
    fill: none;
    pointer-events: all;

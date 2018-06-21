@@ -82,5 +82,3 @@ DataVis.propType = {
 DataVis.defaultProps = {
   data: []
 };
-
-// export default DataVis;
