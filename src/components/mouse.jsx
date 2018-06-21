@@ -76,7 +76,7 @@ class Mouse extends Component {
     } else {
       // console.log("NOT ZERO DATA");
       x.domain([data[0].time, data[data.length - 1].time]);
-      y.domain([d3.extent(data, function(d) {return d.open; })]);
+      y.domain(d3.extent(data, function(d) {return d.open; }));
 
       let overlay = select('.overlay').node();
       let x0 = x.invert(clientPoint(overlay, event)[0]);
@@ -87,8 +87,11 @@ class Mouse extends Component {
       let d = x0 - d0.time > d1.time - x0 ? d1 : d0;
       let day = dateString(d);
       let parseDay = parseDate(day);
-      console.log(y(d.open))
-      focus.attr("transform", "translate(" + x(parseDate(d.time)) + "," + "0" + ")")
+      console.log(d);
+      console.log(d.open);
+
+      console.log(y(d.time))
+      focus.attr("transform", "translate(" + x(parseDate(d.time)) + "," + y(d.open) + ")")
       // focus.attr("transform", "translate(" + x(parseDate(d.time)) + "," + y(d.open) + ")");
       focus.select("text").text("Open:" + " " + formatCurrency(d.open) + " " + d.time);
     }
