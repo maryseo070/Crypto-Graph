@@ -4,6 +4,7 @@ import { AxisX, AxisY } from './Axis.jsx';
 import { Line } from './line.jsx';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import Mouse from './mouse.jsx';
 
 const size = 700;
 const margin = { top: 20, right: 30, bottom: 30, left: 40 };
@@ -20,7 +21,6 @@ class DataVis extends Component {
     this.props.fetchETHDay();
     this.props.fetchETHWeek();
     this.props.fetchETHYear();
-    this.renderDataDots = this.renderDataDots.bind(this);
     this.handleClick = this.handleClick.bind(this);
   }
 
@@ -35,25 +35,13 @@ class DataVis extends Component {
     );
   }
 
-  renderDataDots() {
-    return this.props.ethMonth.map( (point, index) => (
-      <circle
-            className="dot"
-            cx={point[0]}
-            cy={point[1]}
-            r="3.5"
-            >
-      </circle>
-    ));
-  }
-
   render () {
     return(
       <div className="wrapper-div">
-        <button value={this.state.data} onClick={this.handleClick(this.props.ethDay)}>ETH DAY</button>
-        <button value={this.state.data} onClick={this.handleClick(this.props.ethMonth)}>ETH MONTH</button>
-        <button value={this.state.data} onClick={this.handleClick(this.props.ethWeek)}>ETH WEEK</button>
-        <button value={this.state.data} onClick={this.handleClick(this.props.ethYear)}>ETH YEAR</button>
+        <button onClick={this.handleClick(this.props.ethDay)}>ETH DAY</button>
+        <button onClick={this.handleClick(this.props.ethMonth)}>ETH MONTH</button>
+        <button onClick={this.handleClick(this.props.ethWeek)}>ETH WEEK</button>
+        <button onClick={this.handleClick(this.props.ethYear)}>ETH YEAR</button>
       <svg
         width={width}
         height={height}
@@ -73,6 +61,10 @@ class DataVis extends Component {
           data={this.state.data}
           height={height}
           margin={margin}
+          width={width}/>
+        <Mouse
+          data={this.state.data}
+          height={height}
           width={width}/>
 
       </svg>

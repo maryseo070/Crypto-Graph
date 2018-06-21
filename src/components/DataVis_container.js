@@ -1,7 +1,7 @@
 import { fetchETHMonth,
           fetchETHDay,
           fetchETHWeek,
-          fetchETHYear } from './../../actions/api_actions.js';
+          fetchETHYear } from './../actions/api_actions.js';
 import DataVis from './DataVis.jsx';
 import { connect } from 'react-redux';
 

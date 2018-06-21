@@ -15,11 +15,6 @@ export const Line = ({data, height, width}) => {
     .x(function(d) { return x(d.time); })
     .y(function(d) { return y(d.open); });
 
-  // function dateString(object) {
-  //   let date = new Date(parseInt(object.time.toString() + "000"));
-  //   return date;
-  // }
-
   if (Array.isArray(data)) {
     data.forEach(function(d) {
       x.domain(d3.extent(data, function(d) { return d.time; }));
@@ -41,26 +36,3 @@ Line.propType = {
 Line.defaultProps = {
   data: []
 };
-
-//
-// export const Circle = ({data, height, width}) => {
-//   var x = scaleTime()
-//             .range([0, width]);
-//
-//   var y = scaleLinear()
-//           .range([height, 0]);
-//
-//   data.forEach(function(d) {
-//
-//   })
-//
-//   d3.select("circle")
-//     .data(data)
-//     .attr("r", 3)
-//     .attr("cx", d3.extent(data, function(d) { return d[0]; }))
-//     .attr("cy", d3.extent(data, function(d) { return d[1]; }));
-//
-//   return(
-//     <path className="circle" ></path>
-//   )
-// };
