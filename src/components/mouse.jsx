@@ -80,7 +80,7 @@ class Mouse extends Component {
       let i = bisectDate(data, x0, 1);
       let d0 = data[i - 1];
       let d1 = data[i];
-      if (d1 === "undefined") {
+      if (d1 === undefined) {
         d1 = d0;
       }
       let d = x0 - d0.time > d1.time - x0 ? d1 : d0;
