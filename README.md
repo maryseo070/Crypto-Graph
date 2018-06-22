@@ -1,4 +1,6 @@
 # Welcome to Crypto-Graph!
+Live link: https://crypto-graph-rxnvkmmxdx.now.sh
+
 Crypto-Graph is a data-visualization of the price of Ethereum over time(the past day, week, month, or year)
 ![](images/gif.gif)
 
@@ -11,6 +13,12 @@ Crypto-Graph is a data-visualization of the price of Ethereum over time(the past
 - Form to input a past date and check ETH's price on that day
 - Tracks mouse movements on hover of the line chart to display data
 ![](images/mouse_gif.gif)
+
+## Local Setup
+- Clone this repo and navigate into the project directory
+- Run ```npm install``` to install necessary node packages
+- Run ```npm start``` in one tab of your command line and ```node server``` in another
+- The ```npm start``` script will automatically open a tab in your browser to localhost:3000 which will display the app locally
 
 ## Passing data down components
 - The DataVis component is responsible for making the calls to fetch data and passing that data down as props to its child components (XAxis, YAxis, Line, and Mouse).
