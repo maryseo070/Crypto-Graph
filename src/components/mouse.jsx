@@ -70,7 +70,8 @@ class Mouse extends Component {
       .range([height, 0]);
 
     if (Object.keys(data).length === 0 || event === null) {
-      console.log("ZERO DATA");
+      // console.log("ZERO DATA");
+      
     } else {
       // console.log("NOT ZERO DATA");
       x.domain([data[0].time, data[data.length - 1].time]);
@@ -85,8 +86,8 @@ class Mouse extends Component {
       if (d1 === "undefined") {
         d1 = d0;
       }
-      console.log(d0)
-      console.log(d1)
+      // console.log(d0)
+      // console.log(d1)
       let d = x0 - d0.time > d1.time - x0 ? d1 : d0;
       let day = dateString(d);
       let parseDay = parseDate(day);

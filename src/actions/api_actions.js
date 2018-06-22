@@ -4,6 +4,20 @@ export const RECEIVE_ETH_MONTH = "RECEIVE_ETH_MONTH";
 export const RECEIVE_ETH_DAY = "RECEIVE_ETH_DAY";
 export const RECEIVE_ETH_WEEK = "RECEIVE_ETH_WEEK";
 export const RECEIVE_ETH_YEAR = "RECEIVE_ETH_YEAR";
+export const RECEIVE_ETH_DATE = "RECEIVE_ETH_DATE";
+
+export const receiveETHDate = (price) => {
+  return {
+    type: RECEIVE_ETH_DATE,
+    price
+  };
+};
+
+export const fetchETHDate = (timestamp) => dispatch => {
+  return ApiUtil.getETHDate(timestamp).then(
+    price => dispatch(receiveETHDate(price))
+  );
+};
 
 export const receiveBitcoinPrice = (btc) => {
   return {

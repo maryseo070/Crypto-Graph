@@ -1,0 +1,27 @@
+.date-input {
+  width:150px;
+  height: 30px;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+
+.submit-input {
+  padding: 10px;
+  font-family: American Typewriter, serif;
+  border-radius: 4px;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+}
+
+form {
+  display: flex;
+  justify-content: center;
+}
+
+.eth-data{
+  display: flex;
+  justify-content: center;
+}

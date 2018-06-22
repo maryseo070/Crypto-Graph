@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './DataVis.css';
 import { AxisX, AxisY } from './Axis.jsx';
 import { Line } from './line.jsx';
+import FormContainer from './form_container.jsx';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Mouse from './mouse.jsx';
@@ -41,6 +42,7 @@ class DataVis extends Component {
       <div className="wrapper-div">
         <h1 className="headers">Welcome to Crypto-Graph!</h1>
         <h2 className="headers">Check the price history of Ethereum (ETH) from the past day, week, month, or year</h2>
+        <FormContainer />
         <section className="button-section">
           <button className="buttons" onClick={this.handleClick(this.props.ethDay)}>Day</button>
           <button className="buttons" onClick={this.handleClick(this.props.ethWeek)}>Week</button>

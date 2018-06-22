@@ -1,5 +1,18 @@
 import $ from 'jquery';
 
+export const getETHDate = (timestamp) =>{
+  return $.ajax({
+    type: "GET",
+    url: `https://min-api.cryptocompare.com/data/pricehistorical?fsym=ETH&tsyms=USD&ts=${timestamp}`,
+    success(price) {
+      return price;
+    },
+    error() {
+      console.log("error in api_util from ethDate");
+    }
+  });
+};
+
 export const getBitcoin = () => {
   return $.ajax({
     type: 'GET',
