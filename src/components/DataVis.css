@@ -1,7 +1,7 @@
 
 body {
   font-family: American Typewriter, serif;
-  font-size: 20px;
+  font-size: 15px;
 }
 .axis path,
 .axis line {
@@ -18,10 +18,10 @@ body {
   color: black;
 }
 h1 {
-  font-size: 40px;
+  font-size: 30px;
 }
 h2{
-  font-size: 30px;
+  font-size: 15px;
 }
 .x-axis{
   stroke: #000;
@@ -92,4 +92,5 @@ button:focus {
 
 .svg {
   border: 1px solid orange;
+  margin-bottom: 300px;
 }

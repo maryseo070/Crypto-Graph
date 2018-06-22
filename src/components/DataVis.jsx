@@ -75,7 +75,7 @@ class DataVis extends Component {
         </div>
       <svg
         className="svg"
-        viewBox={`200 0 ${height} 900`}
+        viewBox={`200 0 ${height} 1000`}
         width={width}
         height={height}
         style={{padding: "40px"}}
