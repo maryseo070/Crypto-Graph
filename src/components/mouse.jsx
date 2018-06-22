@@ -53,11 +53,9 @@ class Mouse extends Component {
 
   mouseOver() {
     select(".focus").style("display", null);
-    // console.log("OVER");
   }
 
   mousemove() {
-    // console.log("moving!");
     let data = this.props.data;
     let width = this.props.width;
     let height = this.props.height;
@@ -71,9 +69,8 @@ class Mouse extends Component {
 
     if (Object.keys(data).length === 0 || event === null) {
       // console.log("ZERO DATA");
-      
+
     } else {
-      // console.log("NOT ZERO DATA");
       x.domain([data[0].time, data[data.length - 1].time]);
       y.domain(d3.extent(data, function(d) {return d.open; }));
 
@@ -86,8 +83,6 @@ class Mouse extends Component {
       if (d1 === "undefined") {
         d1 = d0;
       }
-      // console.log(d0)
-      // console.log(d1)
       let d = x0 - d0.time > d1.time - x0 ? d1 : d0;
       let day = dateString(d);
       let parseDay = parseDate(day);

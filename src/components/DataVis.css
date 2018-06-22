@@ -89,3 +89,7 @@ button:focus {
 .headers{
   font-weight: normal;
 }
+
+.svg {
+  border: 1px solid orange;
+}

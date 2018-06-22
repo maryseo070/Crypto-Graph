@@ -42,7 +42,7 @@ class Form extends Component {
 
     return(
       <div className="form-container" >
-        <div>Select a past date to retrieve ETH price for that day</div>
+        <div>Select a past date to retrieve the ETH price for that day</div>
         <form onSubmit={this.handleSubmit}>
           <input className="date-input" type="date" onChange={this.updateDate}></input>
           <input className="submit-input" type="submit"></input>

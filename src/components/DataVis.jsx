@@ -23,6 +23,7 @@ class DataVis extends Component {
     this.props.fetchETHWeek();
     this.props.fetchETHYear();
     this.handleClick = this.handleClick.bind(this);
+    this.filter = this.filter.bind(this);
   }
 
   componentDidMount() {
@@ -34,6 +35,26 @@ class DataVis extends Component {
     return (e) => (
       this.setState({data: prop})
     );
+  }
+  filter() {
+    if (this.state.data === this.props.ethMonth) {
+      return (
+        <div>ETH price data from the past month:</div>
+      );
+    } else if (this.state.data === this.props.ethDay) {
+      return (
+        <div>ETH price data from the past 24 hours:</div>
+      );
+    } else if (this.state.data === this.props.ethYear) {
+      return (
+        <div>ETH price data from the past year:</div>
+      );
+    } else if (this.state.data === this.props.ethWeek) {
+      return (
+        <div>ETH price data from the past week:</div>
+      );
+    }
+
   }
 
   render () {
@@ -49,6 +70,9 @@ class DataVis extends Component {
           <button className="buttons" onClick={this.handleClick(this.props.ethMonth)}>Month</button>
           <button className="buttons" onClick={this.handleClick(this.props.ethYear)}>Year</button>
         </section>
+        <div>
+          {this.filter()}
+        </div>
       <svg
         className="svg"
         viewBox={`200 0 ${height} 900`}
