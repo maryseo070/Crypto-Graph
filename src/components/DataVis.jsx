@@ -7,6 +7,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Mouse from './mouse.jsx';
 import $ from 'jquery';
+import BtcLine from './btcLine.jsx';
 
 const margin = { top: 20, right: 30, bottom: 30, left: 40 };
 const width = 1200 - margin.left - margin.right;
@@ -17,11 +18,13 @@ class DataVis extends Component {
     super(props);
 
     this.state = {
-      data: this.props.ethMonth
+      data: this.props.ethMonth,
+      btcData: this.props.btcMonth
     };
     this.props.fetchETHDay();
     this.props.fetchETHWeek();
     this.props.fetchETHYear();
+    this.props.fetchBTCMonth();
     this.handleClick = this.handleClick.bind(this);
     this.filter = this.filter.bind(this);
   }
@@ -29,6 +32,9 @@ class DataVis extends Component {
   componentDidMount() {
     this.props.fetchETHMonth().then(
       () => this.setState({data: this.props.ethMonth}));
+    this.props.fetchBTCMonth().then(
+      () => this.setState({btcData: this.props.btcMonth})
+    );
   }
 
   handleClick(prop) {
@@ -58,7 +64,6 @@ class DataVis extends Component {
   }
 
   render () {
-
     return(
       <div className="wrapper-div">
         <h1 className="headers">Welcome to Crypto-Graph!</h1>
@@ -91,6 +96,11 @@ class DataVis extends Component {
           width={width}/>
         <Line
           data={this.state.data}
+          height={height}
+          margin={margin}
+          width={width}/>
+        <BtcLine
+          data={this.state.btcData}
           height={height}
           margin={margin}
           width={width}/>

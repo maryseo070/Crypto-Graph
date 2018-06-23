@@ -3,25 +3,25 @@ import { RECEIVE_BIT,
         RECEIVE_ETH_DAY,
         RECEIVE_ETH_WEEK,
         RECEIVE_ETH_YEAR,
-        RECEIVE_ETH_DATE } from '../actions/api_actions';
+        RECEIVE_ETH_DATE,
+        RECEIVE_BTC_MONTH } from '../actions/api_actions';
 import { combineReducers } from 'redux';
+
+export const btcMonthReducer = (state = {}, action) => {
+  Object.freeze(state);
+  switch(action.type) {
+    case RECEIVE_BTC_MONTH:
+      return action.btc.Data;
+    default:
+      return state;
+  }
+};
 
 export const ethDateReducer = (state = {}, action) => {
   Object.freeze(state);
   switch(action.type) {
     case RECEIVE_ETH_DATE:
       return action.price.ETH.USD;
-    default:
-      return state;
-  }
-};
-
-
-export const bitcoinReducer = (state = {}, action) => {
-  Object.freeze(state);
-  switch(action.type){
-    case RECEIVE_BIT:
-      return action.btc.BTC;
     default:
       return state;
   }
@@ -69,12 +69,12 @@ export const ethYearReducer = (state = {}, action) => {
 
 
 const rootReducer = combineReducers({
-  bitcoin: bitcoinReducer,
   ethMonth: ethMonthReducer,
   ethDay: ethDayReducer,
   ethWeek: ethWeekReducer,
   ethYear: ethYearReducer,
-  ethDate: ethDateReducer
+  ethDate: ethDateReducer,
+  btcMonth: btcMonthReducer
 });
 
 export default rootReducer;

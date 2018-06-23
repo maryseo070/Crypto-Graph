@@ -40,6 +40,19 @@ export const getETHMonth = () => {
   });
 };
 
+export const getBTCMonth = () => {
+  return $.ajax({
+    type: 'GET',
+    url: "https://min-api.cryptocompare.com/data/histoday?fsym=BTC&tsym=USD&limit=30",
+    success(btc) {
+      return btc;
+    },
+    error() {
+      console.log("An error occurred.");
+    },
+  });
+};
+
 export const getETHDay = () => {
   return $.ajax({
     type: "GET",
