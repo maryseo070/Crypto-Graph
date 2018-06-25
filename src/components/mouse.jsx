@@ -42,9 +42,6 @@ class Mouse extends Component {
     select('.overlay').on("mousemove", _this.mousemove);
     this.setState({data: this.props.data});
     let time;
-    if (Array.isArray(data)) {
-      data.forEach(function(d) { time = parseDate(dateString(d.time)); })
-    }
   }
 
   mouseOut() {
@@ -86,29 +83,33 @@ class Mouse extends Component {
       let d = x0 - d0.time > d1.time - x0 ? d1 : d0;
       let day = dateString(d);
       let parseDay = parseDate(day);
-      focus.attr("transform", "translate(" + x(parseDate(d.time)) + "," + y(d.open) + ")")
+      let circle = select(".btc-circle");
+
+
+
+      focus.attr("transform", "translate(" + x(parseDate(d.time)) + "," + y(d.open) + ")");
       focus.select("text").text(
-        "Date: " + parseDay)
+        "Date: " + parseDay);
       focus.select("text")
         .append("tspan")
         .text("Open: " + formatCurrency(d.open))
         .attr("x", 9)
-        .attr("y", 30)
+        .attr("y", 30);
       focus.select("text")
         .append("tspan")
         .text("Close: " + formatCurrency(d.close))
         .attr("x", 9)
-        .attr("y", 50)
+        .attr("y", 50);
       focus.select("text")
         .append("tspan")
         .text("High: " + formatCurrency(d.high))
         .attr("x", 9)
-        .attr("y", 70)
+        .attr("y", 70);
       focus.select("text")
         .append("tspan")
         .text("Low: " + formatCurrency(d.low))
         .attr("x", 9)
-        .attr("y", 90)
+        .attr("y", 90);
 
     }
   }

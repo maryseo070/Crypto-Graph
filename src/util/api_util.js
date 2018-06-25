@@ -82,7 +82,7 @@ export const getETHWeek = () => {
 export const getETHYear = () => {
   return $.ajax({
     type: "GET",
-    url: "https://min-api.cryptocompare.com/data/histoday?fsym=BTC&tsym=USD&limit=365",
+    url: "https://min-api.cryptocompare.com/data/histoday?fsym=ETH&tsym=USD&limit=365",
     success(year) {
       return year;
     },
