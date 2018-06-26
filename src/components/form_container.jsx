@@ -1,5 +1,5 @@
 import { fetchETHDate } from './../actions/api_actions.js';
-import Form from './form.jsx';
+import Form from './Form.jsx';
 import { connect } from 'react-redux';
 
 const msp = state => {

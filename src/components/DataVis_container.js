@@ -2,7 +2,8 @@ import { fetchETHMonth,
           fetchETHDay,
           fetchETHWeek,
           fetchETHYear,
-          fetchBTCMonth } from './../actions/api_actions.js';
+          fetchBTCMonth,
+          fetchBTCYear } from './../actions/api_actions.js';
 import DataVis from './DataVis.jsx';
 import { connect } from 'react-redux';
 
@@ -12,7 +13,8 @@ const msp = state => {
     ethDay: state.ethDay,
     ethWeek: state.ethWeek,
     ethYear: state.ethYear,
-    btcMonth: state.btcMonth
+    btcMonth: state.btcMonth,
+    btcYear: state.btcYear
   };
 };
 
@@ -22,7 +24,8 @@ const mdp = dispatch => {
     fetchETHDay: () => dispatch(fetchETHDay()),
     fetchETHWeek: () => dispatch(fetchETHWeek()),
     fetchETHYear: () => dispatch(fetchETHYear()),
-    fetchBTCMonth: () => dispatch(fetchBTCMonth())
+    fetchBTCMonth: () => dispatch(fetchBTCMonth()),
+    fetchBTCYear: () => dispatch(fetchBTCYear())
   };
 };
 

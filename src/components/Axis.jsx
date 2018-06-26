@@ -2,7 +2,6 @@ import React from 'react';
 import { scaleLinear,scaleTime } from 'd3-scale';
 import { axisBottom, axisLeft } from 'd3-axis';
 import * as d3 from 'd3';
-import { select } from 'd3-selection';
 
 export const AxisX = ({data, width, height}) => {
   // var data = this.props.data;

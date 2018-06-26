@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './App.css';
 import PropTypes from 'prop-types';
 import Dimensions from 'react-dimensions';

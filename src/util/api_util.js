@@ -26,6 +26,31 @@ export const getBitcoin = () => {
   });
 };
 
+export const getETHYear = () => {
+  return $.ajax({
+    type: "GET",
+    url: "https://min-api.cryptocompare.com/data/histoday?fsym=ETH&tsym=USD&limit=364",
+    success(year) {
+      return year;
+    },
+    error() {
+      console.log('could not retrieve year data in util');
+    }
+  });
+};
+export const getBTCYear = () => {
+  return $.ajax({
+    type: "GET",
+    url: "https://min-api.cryptocompare.com/data/histoday?fsym=BTC&tsym=USD&limit=365",
+    success(year) {
+      return year;
+    },
+    error() {
+      console.log('could not retrieve year data in util');
+    }
+  });
+};
+
 
 export const getETHMonth = () => {
   return $.ajax({
@@ -53,18 +78,6 @@ export const getBTCMonth = () => {
   });
 };
 
-export const getETHDay = () => {
-  return $.ajax({
-    type: "GET",
-    url: "https://min-api.cryptocompare.com/data/histohour?fsym=ETH&tsym=USD&limit=24",
-    success(day){
-      return day;
-    },
-    error() {
-      console.log('could not retrieve day data in util');
-    }
-  });
-};
 
 export const getETHWeek = () => {
   return $.ajax({
@@ -79,15 +92,15 @@ export const getETHWeek = () => {
   });
 };
 
-export const getETHYear = () => {
+export const getETHDay = () => {
   return $.ajax({
     type: "GET",
-    url: "https://min-api.cryptocompare.com/data/histoday?fsym=ETH&tsym=USD&limit=365",
-    success(year) {
-      return year;
+    url: "https://min-api.cryptocompare.com/data/histohour?fsym=ETH&tsym=USD&limit=24",
+    success(day){
+      return day;
     },
     error() {
-      console.log('could not retrieve year data in util');
+      console.log('could not retrieve day data in util');
     }
   });
 };

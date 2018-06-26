@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
 import './Mouse.css';
-import { select, clientPoint, event } from 'd3-selection';
+import { select, clientPoint, mouse, event } from 'd3-selection';
 import * as d3 from 'd3';
 import { scaleTime, scaleLinear } from 'd3-scale';
 import { bisector } from 'd3-array';
 import { format } from 'd3-format';
-import { timeParse } from 'd3-time-format';
+import { timeFormat, timeParse } from 'd3-time-format';
 
 var focusStyle = {
   display: "none"
@@ -25,7 +25,7 @@ var bisectDate = bisector(function(d) { return d.time; }).left;
 var formatValue = format(",.2f");
 var formatCurrency = function(d) {return "$" + formatValue(d); };
 
-class Mouse extends Component {
+class BtcMouse extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -37,7 +37,7 @@ class Mouse extends Component {
   }
 
   componentDidMount() {
-    // let data = this.props.data;
+    let data = this.props.data;
     let _this = this;
     select('.overlay').on("mousemove", _this.mousemove);
     this.setState({data: this.props.data});
@@ -135,4 +135,4 @@ class Mouse extends Component {
   }
 }
 
-export default Mouse;
+export default BtcMouse;

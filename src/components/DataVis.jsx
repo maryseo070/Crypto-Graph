@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import './DataVis.css';
 import { AxisX, AxisY } from './Axis.jsx';
-import { Line } from './line.jsx';
-import FormContainer from './form_container.jsx';
+import { Line } from './Line.jsx';
+import FormContainer from './Form_container.jsx';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import Mouse from './mouse.jsx';
-import $ from 'jquery';
-import BtcLine from './btcLine.jsx';
+import Mouse from './Mouse.jsx';
+import BtcLine from './BtcLine.jsx';
+// import BtcMouse from './BtcMouse.jsx';
 
 const margin = { top: 20, right: 30, bottom: 30, left: 40 };
 const width = 1200 - margin.left - margin.right;
@@ -24,7 +23,7 @@ class DataVis extends Component {
     this.props.fetchETHDay();
     this.props.fetchETHWeek();
     this.props.fetchETHYear();
-    this.props.fetchBTCMonth();
+    this.props.fetchBTCYear();
     this.handleClick = this.handleClick.bind(this);
     this.filter = this.filter.bind(this);
   }
@@ -37,9 +36,9 @@ class DataVis extends Component {
     );
   }
 
-  handleClick(prop) {
+  handleClick(ethProp, btcProp) {
     return (e) => (
-      this.setState({data: prop})
+      this.setState({data: ethProp, btcData: btcProp})
     );
   }
   filter() {
@@ -72,8 +71,8 @@ class DataVis extends Component {
         <section className="button-section">
           <button className="buttons" onClick={this.handleClick(this.props.ethDay)}>Day</button>
           <button className="buttons" onClick={this.handleClick(this.props.ethWeek)}>Week</button>
-          <button className="buttons" onClick={this.handleClick(this.props.ethMonth)}>Month</button>
-          <button className="buttons" onClick={this.handleClick(this.props.ethYear)}>Year</button>
+          <button className="buttons" onClick={this.handleClick(this.props.ethMonth, this.props.btcMonth)}>Month</button>
+          <button className="buttons" onClick={this.handleClick(this.props.ethYear, this.props.btcYear)}>Year</button>
         </section>
         <div>
           {this.filter()}

@@ -1,7 +1,6 @@
 import { connect } from 'react-redux';
 import { fetchBitcoinPrice,
-          fetchETHMonth,
-          fetchETHDay } from './actions/api_actions';
+          fetchETHMonth } from './actions/api_actions';
 import App from './App';
 
 const msp = state => {
