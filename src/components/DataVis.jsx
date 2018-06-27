@@ -63,6 +63,12 @@ class DataVis extends Component {
   }
 
   render () {
+    // debugger
+    let combinedData = this.state.data;
+    if (Array.isArray(this.state.data) && Array.isArray(this.state.btcData)) {
+      combinedData = this.state.data.concat(this.state.btcData);
+    }
+    // debugger
     return(
       <div className="wrapper-div">
         <h1 className="headers">Welcome to Crypto-Graph!</h1>
@@ -85,11 +91,11 @@ class DataVis extends Component {
         style={{padding: "40px"}}
         tranform={`translate(${margin.left}, ${margin.top})`}>
         <AxisX
-          data={this.state.data}
+          data={combinedData}
           height={height}
           width={width}/>
         <AxisY
-          data={this.state.data}
+          data={combinedData}
           height={height}
           margin={margin}
           width={width}/>

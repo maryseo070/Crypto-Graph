@@ -5,8 +5,7 @@ import * as d3 from 'd3';
 
 export const AxisX = ({data, width, height}) => {
   // var data = this.props.data;
-
-
+  // debugger
   function dateString(object) {
     return new Date(parseInt(object.time.toString() + "000"));
   }
@@ -35,7 +34,7 @@ export const AxisX = ({data, width, height}) => {
 
 
 export const AxisY = ({ data, width, height }) => {
-
+  debugger
   var y = scaleLinear()
     .range([height, 0]);
 
