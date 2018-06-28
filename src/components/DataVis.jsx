@@ -101,6 +101,7 @@ class DataVis extends Component {
           width={width}/>
         <Line
           data={this.state.data}
+          btcData={this.state.btcData}
           height={height}
           margin={margin}
           width={width}/>

@@ -38,6 +38,7 @@ export const getETHYear = () => {
     }
   });
 };
+
 export const getBTCYear = () => {
   return $.ajax({
     type: "GET",
