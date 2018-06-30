@@ -18,22 +18,23 @@ class DataVis extends Component {
 
     this.state = {
       data: this.props.ethMonth,
-      btcData: this.props.btcMonth
+      btcData: []
     };
     this.props.fetchETHDay();
     this.props.fetchETHWeek();
     this.props.fetchETHYear();
-    this.props.fetchBTCYear();
+    // this.props.fetchBTCYear();
     this.handleClick = this.handleClick.bind(this);
     this.filter = this.filter.bind(this);
+    this.bitcoinClick = this.bitcoinClick.bind(this);
   }
 
   componentDidMount() {
     this.props.fetchETHMonth().then(
       () => this.setState({data: this.props.ethMonth}));
-    this.props.fetchBTCMonth().then(
-      () => this.setState({btcData: this.props.btcMonth})
-    );
+    // this.props.fetchBTCMonth().then(
+    //   () => this.setState({btcData: this.props.btcMonth})
+    // );
   }
 
   handleClick(ethProp, btcProp) {
@@ -62,6 +63,11 @@ class DataVis extends Component {
 
   }
 
+  bitcoinClick() {
+    //send combined data to x and y axis (mostly just y)
+    //send data to BTcLine Component
+  }
+
   render () {
     // debugger
     let combinedData = this.state.data;
@@ -80,6 +86,7 @@ class DataVis extends Component {
           <button className="buttons" onClick={this.handleClick(this.props.ethMonth, this.props.btcMonth)}>Month</button>
           <button className="buttons" onClick={this.handleClick(this.props.ethYear, this.props.btcYear)}>Year</button>
         </section>
+        <button className="buttons" onClick={this.bitcoinClick()}>Bitcoin Compairson</button>
         <div>
           {this.filter()}
         </div>
@@ -107,6 +114,7 @@ class DataVis extends Component {
           width={width}/>
         <BtcLine
           data={this.state.btcData}
+          ethData={this.state.data}
           height={height}
           margin={margin}
           width={width}/>

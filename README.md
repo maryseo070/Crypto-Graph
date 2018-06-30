@@ -17,7 +17,6 @@ Crypto-Graph is a data visualization app that shows the price of Ethereum over t
 ## Local Setup
 - Clone this repo and navigate into the project directory
 - Run ```npm install``` to install necessary node packages
-- Run ```npm start``` in one tab of your command line and ```node server``` in another
 - The ```npm start``` script will automatically open a tab in your browser to localhost:3000 which will display the app locally
 
 ## Passing data down components
