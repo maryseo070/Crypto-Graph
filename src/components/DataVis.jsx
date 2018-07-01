@@ -12,6 +12,7 @@ const margin = { top: 20, right: 30, bottom: 30, left: 40 };
 const width = 1200 - margin.left - margin.right;
 const height = 800 - margin.top - margin.bottom;
 
+
 class DataVis extends Component {
   constructor(props){
     super(props);
@@ -32,9 +33,9 @@ class DataVis extends Component {
   componentDidMount() {
     this.props.fetchETHMonth().then(
       () => this.setState({data: this.props.ethMonth}));
-    // this.props.fetchBTCMonth().then(
-    //   () => this.setState({btcData: this.props.btcMonth})
-    // );
+    this.props.fetchBTCMonth().then(
+      () => this.setState({btcData: this.props.btcMonth})
+    );
   }
 
   handleClick(ethProp, btcProp) {
@@ -98,23 +99,17 @@ class DataVis extends Component {
         style={{padding: "40px"}}
         tranform={`translate(${margin.left}, ${margin.top})`}>
         <AxisX
-          data={combinedData}
+          data={this.state.data}
           height={height}
           width={width}/>
         <AxisY
-          data={combinedData}
+          data={this.state.data}
           height={height}
           margin={margin}
           width={width}/>
         <Line
           data={this.state.data}
           btcData={this.state.btcData}
-          height={height}
-          margin={margin}
-          width={width}/>
-        <BtcLine
-          data={this.state.btcData}
-          ethData={this.state.data}
           height={height}
           margin={margin}
           width={width}/>

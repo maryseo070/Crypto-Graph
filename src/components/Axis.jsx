@@ -4,7 +4,6 @@ import { axisBottom, axisLeft } from 'd3-axis';
 import * as d3 from 'd3';
 
 export const AxisX = ({data, width, height}) => {
-  // var data = this.props.data;
   // debugger
   function dateString(object) {
     return new Date(parseInt(object.time.toString() + "000"));

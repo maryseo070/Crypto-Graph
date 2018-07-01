@@ -23,12 +23,12 @@ export const BtcLine = ({data, height, width, ethData}) => {
       y.domain(d3.extent(data, function(d) { return d.open; }));
     });
   }
-  // else if (Array.isArray(data)) {
-  //   data.forEach(function(d) {
-  //     x.domain(d3.extent(data, function(d) { return d.time; }));
-  //     y.domain(d3.extent(data, function(d) { return d.open; }));
-  //   });
-  // }
+  else if (Array.isArray(data)) {
+    data.forEach(function(d) {
+      x.domain(d3.extent(data, function(d) { return d.time; }));
+      y.domain(d3.extent(data, function(d) { return d.open; }));
+    });
+  }
 
   var newline = l(data);
 
