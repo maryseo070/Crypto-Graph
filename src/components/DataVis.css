@@ -13,10 +13,24 @@ body {
   stroke-dashoffset: 2000;
   animation: dash 5s linear forwards;
 }
-
+.yright line, path {
+  font-family: American Typewriter, serif;
+  font-size: 15px;
+  fill: none;
+  stroke: purple;
+  shape-rendering: crispEdges;
+  stroke-dasharray: 2000;
+  stroke-dashoffset: 2000;
+  animation: dash 5s linear forwards;
+}
 .axis-title{
   font-size: 24px;
   color: black;
+}
+.axis-two{
+  color: red;
+  background-color: red;
+  stroke: red;
 }
 h1 {
   font-size: 30px;

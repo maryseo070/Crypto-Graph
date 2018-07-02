@@ -1,6 +1,6 @@
 import React from 'react';
 import { scaleLinear,scaleTime } from 'd3-scale';
-import { axisBottom, axisLeft } from 'd3-axis';
+import { axisBottom, axisLeft, axisRight } from 'd3-axis';
 import * as d3 from 'd3';
 
 export const AxisX = ({data, width, height}) => {
@@ -32,8 +32,8 @@ export const AxisX = ({data, width, height}) => {
 };
 
 
-export const AxisY = ({ data, width, height }) => {
-
+export const AxisY = ({ data, width, height, group }) => {
+  // debugger
   var y = scaleLinear()
     .range([height, 0]);
 
@@ -51,5 +51,30 @@ export const AxisY = ({ data, width, height }) => {
 
     return(
       <g className="y axis"></g>
+    );
+};
+
+export const AxisYRight = ({ data, width, height }) => {
+  // debugger
+  var yRight = scaleLinear()
+    .range([height, 0]);
+
+  var yAxis = axisRight(yRight);
+
+  yRight.domain(d3.extent(data, function(d) { return d.open; }));
+
+  d3.select(".yRight").call(yAxis)
+    .attr("class", "yRight")
+    .attr("transform", "translate("  + width + ", 0)")
+
+    // .append("text")
+      // .attr("transform", "rotate(-90)")
+      // .attr("y", 200)
+      // .attr("dy", ".71em")
+      // .style("text-anchor", "end")
+      // .text("Price ($)");
+
+    return(
+      <g className="yRight"></g>
     );
 };

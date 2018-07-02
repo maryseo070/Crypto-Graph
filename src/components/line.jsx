@@ -16,13 +16,13 @@ export const Line = ({data, btcData = [], height, width}) => {
     .y(function(d) { return y(d.open); });
 
   if (Array.isArray(data) && Array.isArray(btcData)) {
-    // let combined = data.concat(btcData);
+    let combined = data.concat(btcData);
     //used combined in y domain to test both data sets
     data.forEach(function(d) {
       x.domain(d3.extent(data, function(d) { return d.time; }));
-      y.domain(d3.extent(data, function(d) { return d.open; }));
+      y.domain(d3.extent(combined, function(d) { return d.open; }));
     });
-    
+
     ///only bitcoin:
     // btcData.forEach(function(d) {
     //   x.domain(d3.extent(data, function(d) { return d.time; }));

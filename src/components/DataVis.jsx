@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './DataVis.css';
-import { AxisX, AxisY } from './Axis.jsx';
+import { AxisX, AxisY, AxisYRight } from './Axis.jsx';
 import { Line } from './Line.jsx';
 import FormContainer from './Form_container.jsx';
 import PropTypes from 'prop-types';
@@ -100,11 +100,16 @@ class DataVis extends Component {
         tranform={`translate(${margin.left}, ${margin.top})`}>
         <AxisX
           data={this.state.data}
-          height={height}
+          height={1000}
           width={width}/>
         <AxisY
           data={this.state.data}
-          height={height}
+          height="1000"
+          margin={margin}
+          width={width}/>
+        <AxisYRight
+          data={this.state.data}
+          height="1000"
           margin={margin}
           width={width}/>
         <Line
@@ -113,16 +118,24 @@ class DataVis extends Component {
           height={height}
           margin={margin}
           width={width}/>
+        <BtcLine
+            data={this.state.btcData}
+            btcData={this.state.btcData}
+            height={height}
+            margin={margin}
+            width={width}/>
         <Mouse
           data={this.state.data}
           height={height}
           width={width}/>
 
       </svg>
+
     </div>
     );
   }
 }
+
 
 export default DataVis;
 

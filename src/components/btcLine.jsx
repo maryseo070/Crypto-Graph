@@ -17,10 +17,10 @@ export const BtcLine = ({data, height, width, ethData}) => {
     .y(function(d) { return y(d.open); });
 
   if (Array.isArray(data) && Array.isArray(ethData)) {
-    // let combo = data.concat(ethData);
+    let combo = data.concat(ethData);
     data.forEach(function(d) {
       x.domain(d3.extent(data, function(d) { return d.time; }));
-      y.domain(d3.extent(data, function(d) { return d.open; }));
+      y.domain(d3.extent(combo, function(d) { return d.open; }));
     });
   }
   else if (Array.isArray(data)) {

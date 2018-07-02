@@ -5,7 +5,7 @@ Crypto-Graph is a data visualization app that shows the price of Ethereum over t
 ![](images/gif.gif)
 
 ### Technologies
-- Technologies used include d3 and create-react-app with a node server and the app can run via docker container. It is deployed using now.sh (https://zeit.co/now) and the data is taken from the crypto-compare API (https://min-api.cryptocompare.com/)
+- Technologies used include d3 and create-react-app with a node express server and the app can run via docker container. It is deployed using now.sh (https://zeit.co/now) and the data is taken from the crypto-compare API (https://min-api.cryptocompare.com/)
 - The app utilizes d3 to manipulate the DOM and React/Redux to fetch data and render svg elements
 
 ## Features
