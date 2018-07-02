@@ -41,7 +41,7 @@ class DataVis extends Component {
   }
 
   handleClick(ethProp, btcProp) {
-
+    // debugger
     return (e) => (
       this.setState({data: ethProp, btcData: btcProp})
     );
@@ -102,16 +102,16 @@ class DataVis extends Component {
         tranform={`translate(${margin.left}, ${margin.top})`}>
         <AxisX
           data={this.state.data}
-          height={1000}
+          height={height}
           width={width}/>
         <AxisY
           data={this.state.data}
-          height="1000"
+          height={height}
           margin={margin}
           width={width}/>
         <AxisYRight
           data={this.state.btcData}
-          height="1000"
+          height={height}
           margin={margin}
           width={width}/>
         <Line

@@ -32,7 +32,7 @@ export const AxisX = ({data, width, height}) => {
 };
 
 
-export const AxisY = ({ data, width, height, group }) => {
+export const AxisY = ({ data, width, height }) => {
   // debugger
   var y = scaleLinear()
     .range([height, 0]);

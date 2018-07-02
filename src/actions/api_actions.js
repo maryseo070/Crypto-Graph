@@ -111,12 +111,12 @@ export const fetchETHDay = () => dispatch => {
 };
 
 export const fetchBTCDay = () => dispatch => {
-  return ApiUtil.getETHDay().then(
+  return ApiUtil.getBTCDay().then(
   day => dispatch(receiveBTCDay(day)));
 };
 
 export const fetchBTCWeek = () => dispatch => {
-  return ApiUtil.getETHWeek().then(
+  return ApiUtil.getBTCWeek().then(
   week => dispatch(receiveBTCWeek(week)));
 };
 

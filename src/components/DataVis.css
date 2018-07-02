@@ -3,11 +3,23 @@ body {
   font-family: American Typewriter, serif;
   font-size: 15px;
 }
-
 .axis path,
 .axis line {
+  stroke-width: 1px;
   fill: none;
-  stroke: blue;
+  stroke-linecap: round;
+  stroke: purple;
+  shape-rendering: crispEdges;
+  stroke-dasharray: 2000;
+  stroke-dashoffset: 2000;
+  animation: dash 5s linear forwards;
+}
+.axis path,
+.axis line {
+  stroke-width: 2;
+  stroke-linecap: round;
+  fill: none;
+  stroke: purple;
   shape-rendering: crispEdges;
   stroke-dasharray: 2000;
   stroke-dashoffset: 2000;
@@ -15,7 +27,8 @@ body {
 }
 .yright line, path, tick {
   fill: none;
-  stroke: red;
+  stroke-width: 2;
+  stroke: pink;
   shape-rendering: crispEdges;
   stroke-dasharray: 2000;
   stroke-dashoffset: 2000;
@@ -37,8 +50,26 @@ body {
 }
 h1 {
   font-size: 30px;
-
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  border-right: .15em solid orange; /* The typwriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: .15em; /* Adjust as needed */
+  animation:
+    typing 4s steps(40, end),
+    blink-caret .75s step-end infinite;
 }
+
+/* The typing effect */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 22% }
+}
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: transparent; }
+}
+
 h2{
   font-size: 15px;
 }
@@ -60,34 +91,34 @@ h2{
 
 .y-text{
   font-size: 20px;
-  fill: blue;
+  fill: purple;
 }
 .y2-text {
   font-size: 20px;
-  fill: red;
+  fill: pink;
 }
 
 
 .line {
   fill: none;
-  stroke: blue;
-  stroke-width: 3px;
+  stroke: purple;
+  stroke-width: 3;
   stroke-dasharray: 6000;
   stroke-dashoffset: 6000;
-  animation: dash 7s linear forwards;
+  animation: dash 9s linear forwards;
 }
 .btc-line{
   fill: none;
-  stroke: red;
-  stroke-width: 3px;
+  stroke: pink;
+  stroke-width: 3;
   stroke-dasharray: 6000;
   stroke-dashoffset: 6000;
-  animation: dash 7s linear forwards;
+  animation: dash 9s linear forwards;
 }
 
 .dot {
   fill: white;
-  stroke: steelblue;
+  stroke: purple;
   stroke-width: 1.5px;
 }
 
