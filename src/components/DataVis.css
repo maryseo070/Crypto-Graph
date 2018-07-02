@@ -49,6 +49,7 @@ body {
   stroke: red;
 }
 h1 {
+  padding-top: 25px;
   font-size: 30px;
   overflow: hidden; /* Ensures the content is not revealed until the animation */
   border-right: .15em solid orange; /* The typwriter cursor */
