@@ -1,7 +1,7 @@
 # Welcome to Crypto-Graph!
-Live link: https://crypto-graph-kdzgkqyhkv.now.sh/
+Live link: https://crypto-graph-mevrlhcwaj.now.sh
 
-Crypto-Graph is a data visualization app that shows the price of Ethereum over time (the past day, week, month, or year). The purple line and left y-axis display ETH price data  and on hover over the line, reveals the data per particular (x, y) coordinates. The right y-axis and pink line display Bitcoin price data for reference. 
+Crypto-Graph is a data visualization app that shows the price of Ethereum over time (the past day, week, month, or year). The purple line and left y-axis display ETH price data  and on hover over the line, reveals the data per particular (x, y) coordinates. The right y-axis and pink line display Bitcoin price data for reference.
 
 ![](images/gif.gif)
 
