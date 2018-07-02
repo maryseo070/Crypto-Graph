@@ -7,21 +7,24 @@ body {
 .axis path,
 .axis line {
   fill: none;
-  stroke: black;
+  stroke: blue;
   shape-rendering: crispEdges;
   stroke-dasharray: 2000;
   stroke-dashoffset: 2000;
   animation: dash 5s linear forwards;
 }
-.yright line, path {
-  font-family: American Typewriter, serif;
-  font-size: 15px;
+.yright line, path, tick {
   fill: none;
-  stroke: purple;
+  stroke: red;
   shape-rendering: crispEdges;
   stroke-dasharray: 2000;
   stroke-dashoffset: 2000;
   animation: dash 5s linear forwards;
+}
+
+.tick {
+  font-size: 15px;
+  color: inherit;
 }
 .axis-title{
   font-size: 24px;
@@ -55,11 +58,19 @@ h2{
   }
 }
 
+.y-text{
+  font-size: 20px;
+  fill: blue;
+}
+.y2-text {
+  font-size: 20px;
+  fill: red;
+}
 
 
 .line {
   fill: none;
-  stroke: green;
+  stroke: blue;
   stroke-width: 3px;
   stroke-dasharray: 6000;
   stroke-dashoffset: 6000;
@@ -67,7 +78,7 @@ h2{
 }
 .btc-line{
   fill: none;
-  stroke: blue;
+  stroke: red;
   stroke-width: 3px;
   stroke-dasharray: 6000;
   stroke-dashoffset: 6000;

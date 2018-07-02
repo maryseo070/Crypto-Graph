@@ -1,13 +1,16 @@
 import * as ApiUtil from '../util/api_util';
 export const RECEIVE_BIT = "RECEIVE_BIT";
 export const RECEIVE_ETH_MONTH = "RECEIVE_ETH_MONTH";
+export const RECEIVE_BTC_DAY = "RECEIVE_BTC_DAY";
 export const RECEIVE_ETH_DAY = "RECEIVE_ETH_DAY";
 export const RECEIVE_ETH_WEEK = "RECEIVE_ETH_WEEK";
+export const RECEIVE_BTC_WEEK = "RECEIVE_BTC_WEEK";
 export const RECEIVE_ETH_YEAR = "RECEIVE_ETH_YEAR";
 export const RECEIVE_ETH_DATE = "RECEIVE_ETH_DATE";
 export const RECEIVE_BTC_MONTH = "RECEIVE_BTC_MONTH";
 export const RECEIVE_BTC_YEAR = "RECEIVE_BTC_YEAR";
 
+//ETH
 export const receiveETHDate = (price) => {
   return {
     type: RECEIVE_ETH_DATE,
@@ -55,10 +58,22 @@ export const receiveETHDay = (day) => {
     day
   };
 };
+export const receiveBTCDay = (day) => {
+  return {
+    type: RECEIVE_BTC_DAY,
+    day
+  };
+};
 
 export const receiveETHWeek = week => {
   return {
     type: RECEIVE_ETH_WEEK,
+    week
+  };
+};
+export const receiveBTCWeek = week => {
+  return {
+    type: RECEIVE_BTC_WEEK,
     week
   };
 };
@@ -95,10 +110,21 @@ export const fetchETHDay = () => dispatch => {
   day => dispatch(receiveETHDay(day)));
 };
 
+export const fetchBTCDay = () => dispatch => {
+  return ApiUtil.getETHDay().then(
+  day => dispatch(receiveBTCDay(day)));
+};
+
+export const fetchBTCWeek = () => dispatch => {
+  return ApiUtil.getETHWeek().then(
+  week => dispatch(receiveBTCWeek(week)));
+};
+
 export const fetchETHWeek = () => dispatch => {
   return ApiUtil.getETHWeek().then(
   week => dispatch(receiveETHWeek(week)));
 };
+
 
 export const fetchETHYear = () => dispatch => {
   return ApiUtil.getETHYear().then(

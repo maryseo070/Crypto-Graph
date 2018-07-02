@@ -43,11 +43,12 @@ export const AxisY = ({ data, width, height, group }) => {
 
   d3.select(".y").call(yAxis)
     .append("text")
-      .attr("transform", "rotate(-90)")
-      .attr("y", 6)
-      .attr("dy", ".71em")
-      .style("text-anchor", "end")
-      .text("Price ($)");
+    .attr("transform", "rotate(-360)")
+    .attr("class", "y-text")
+    .attr("y", 6)
+    .attr("dy", ".71em")
+    .style("text-anchor", "end")
+    .text("ETH Price ($)");
 
     return(
       <g className="y axis"></g>
@@ -66,13 +67,13 @@ export const AxisYRight = ({ data, width, height }) => {
   d3.select(".yRight").call(yAxis)
     .attr("class", "yRight")
     .attr("transform", "translate("  + width + ", 0)")
-
-    // .append("text")
-      // .attr("transform", "rotate(-90)")
-      // .attr("y", 200)
-      // .attr("dy", ".71em")
-      // .style("text-anchor", "end")
-      // .text("Price ($)");
+    .append("text")
+    .attr("transform", "rotate(-360)")
+    .attr("class", "y2-text")
+    .attr("y", 6)
+    .attr("dy", ".71em")
+    .style("text-anchor", "end")
+    .text("BTC Price ($)");
 
     return(
       <g className="yRight"></g>

@@ -4,7 +4,7 @@ import * as d3 from 'd3';
 import { line } from 'd3-shape';
 import PropTypes from 'prop-types';
 
-export const BtcLine = ({data, height, width, ethData}) => {
+export const BtcLine = ({data, height, width}) => {
 
   var x = scaleTime()
             .range([0, width]);
@@ -16,14 +16,8 @@ export const BtcLine = ({data, height, width, ethData}) => {
     .x(function(d) { return x(d.time); })
     .y(function(d) { return y(d.open); });
 
-  if (Array.isArray(data) && Array.isArray(ethData)) {
-    let combo = data.concat(ethData);
-    data.forEach(function(d) {
-      x.domain(d3.extent(data, function(d) { return d.time; }));
-      y.domain(d3.extent(combo, function(d) { return d.open; }));
-    });
-  }
-  else if (Array.isArray(data)) {
+
+  if (Array.isArray(data)) {
     data.forEach(function(d) {
       x.domain(d3.extent(data, function(d) { return d.time; }));
       y.domain(d3.extent(data, function(d) { return d.open; }));

@@ -92,11 +92,35 @@ export const getETHWeek = () => {
     }
   });
 };
+export const getBTCWeek = () => {
+  return $.ajax({
+    type: "GET",
+    url: "https://min-api.cryptocompare.com/data/histoday?fsym=BTC&tsym=USD&limit=10",
+    success(week) {
+      return week;
+    },
+    error() {
+      console.log('could not retrieve week data in util');
+    }
+  });
+};
 
 export const getETHDay = () => {
   return $.ajax({
     type: "GET",
     url: "https://min-api.cryptocompare.com/data/histohour?fsym=ETH&tsym=USD&limit=24",
+    success(day){
+      return day;
+    },
+    error() {
+      console.log('could not retrieve day data in util');
+    }
+  });
+};
+export const getBTCDay = () => {
+  return $.ajax({
+    type: "GET",
+    url: "https://min-api.cryptocompare.com/data/histohour?fsym=BTC&tsym=USD&limit=24",
     success(day){
       return day;
     },

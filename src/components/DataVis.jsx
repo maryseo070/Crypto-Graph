@@ -22,9 +22,11 @@ class DataVis extends Component {
       btcData: []
     };
     this.props.fetchETHDay();
+    this.props.fetchBTCDay();
     this.props.fetchETHWeek();
+    this.props.fetchBTCWeek();
     this.props.fetchETHYear();
-    // this.props.fetchBTCYear();
+    this.props.fetchBTCYear();
     this.handleClick = this.handleClick.bind(this);
     this.filter = this.filter.bind(this);
     this.bitcoinClick = this.bitcoinClick.bind(this);
@@ -39,6 +41,7 @@ class DataVis extends Component {
   }
 
   handleClick(ethProp, btcProp) {
+
     return (e) => (
       this.setState({data: ethProp, btcData: btcProp})
     );
@@ -82,12 +85,11 @@ class DataVis extends Component {
         <h2 className="headers">Check the price history of Ethereum (ETH) from the past day, week, month, or year</h2>
         <FormContainer />
         <section className="button-section">
-          <button className="buttons" onClick={this.handleClick(this.props.ethDay)}>Day</button>
-          <button className="buttons" onClick={this.handleClick(this.props.ethWeek)}>Week</button>
+          <button className="buttons" onClick={this.handleClick(this.props.ethDay, this.props.btcDay)}>Day</button>
+          <button className="buttons" onClick={this.handleClick(this.props.ethWeek, this.props.btcWeek)}>Week</button>
           <button className="buttons" onClick={this.handleClick(this.props.ethMonth, this.props.btcMonth)}>Month</button>
           <button className="buttons" onClick={this.handleClick(this.props.ethYear, this.props.btcYear)}>Year</button>
         </section>
-        <button className="buttons" onClick={this.bitcoinClick()}>Bitcoin Compairson</button>
         <div>
           {this.filter()}
         </div>
@@ -108,19 +110,17 @@ class DataVis extends Component {
           margin={margin}
           width={width}/>
         <AxisYRight
-          data={this.state.data}
+          data={this.state.btcData}
           height="1000"
           margin={margin}
           width={width}/>
         <Line
           data={this.state.data}
-          btcData={this.state.btcData}
           height={height}
           margin={margin}
           width={width}/>
         <BtcLine
             data={this.state.btcData}
-            btcData={this.state.btcData}
             height={height}
             margin={margin}
             width={width}/>
