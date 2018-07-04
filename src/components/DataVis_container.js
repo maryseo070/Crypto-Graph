@@ -9,6 +9,11 @@ import { fetchETHMonth,
 import DataVis from './DataVis.jsx';
 import { connect } from 'react-redux';
 
+//since the DataVis component is in charge of passing data down to its child
+//components, it needs all of the necessary data which is why we need
+//all of the fetching actions in map dispatch to props and all of the
+//data points in map state to props
+
 const msp = state => {
   return {
     ethMonth: state.ethMonth,

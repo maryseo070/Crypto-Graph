@@ -37,7 +37,6 @@ class Mouse extends Component {
   }
 
   componentDidMount() {
-    // let data = this.props.data;
     let _this = this;
     select('.overlay').on("mousemove", _this.mousemove);
     this.setState({data: this.props.data});
@@ -86,10 +85,10 @@ class Mouse extends Component {
       let circle = select(".btc-circle");
 
 
-
       focus.attr("transform", "translate(" + x(parseDate(d.time)) + "," + y(d.open) + ")");
       focus.select("text").text(
         "Date: " + parseDay);
+//takes care of rendering the text for data ~ date, open, close, high, low
       focus.select("text")
         .append("tspan")
         .text("Open: " + formatCurrency(d.open))
@@ -110,7 +109,6 @@ class Mouse extends Component {
         .text("Low: " + formatCurrency(d.low))
         .attr("x", 9)
         .attr("y", 90);
-
     }
   }
 
