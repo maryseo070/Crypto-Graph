@@ -21,6 +21,7 @@ class DataVis extends Component {
       data: this.props.ethMonth,
       btcData: []
     };
+    //fetch all data from API in constructor phase
     this.props.fetchETHDay();
     this.props.fetchBTCDay();
     this.props.fetchETHWeek();
@@ -29,10 +30,10 @@ class DataVis extends Component {
     this.props.fetchBTCYear();
     this.handleClick = this.handleClick.bind(this);
     this.filter = this.filter.bind(this);
-    this.bitcoinClick = this.bitcoinClick.bind(this);
   }
 
   componentDidMount() {
+    //default graph is set to monthly data
     this.props.fetchETHMonth().then(
       () => this.setState({data: this.props.ethMonth}));
     this.props.fetchBTCMonth().then(
@@ -41,7 +42,11 @@ class DataVis extends Component {
   }
 
   handleClick(ethProp, btcProp) {
-    // debugger
+    //on click, I pass down the corresponding props as arguments
+    //this function and using those arguments, set the state
+    //since this.state.data and this.state.btcData are the data
+    //being passed down to the components to render the line chart
+    //changing the state will change what is shown on the graph
     return (e) => (
       this.setState({data: ethProp, btcData: btcProp})
     );
@@ -67,18 +72,8 @@ class DataVis extends Component {
 
   }
 
-  bitcoinClick() {
-    //send combined data to x and y axis (mostly just y)
-    //send data to BTcLine Component
-  }
 
   render () {
-    // debugger
-    let combinedData = this.state.data;
-    if (Array.isArray(this.state.data) && Array.isArray(this.state.btcData)) {
-      combinedData = this.state.data.concat(this.state.btcData);
-    }
-    // debugger
     return(
       <div className="wrapper-div">
         <h1 className="headers">Welcome to Crypto-Graph!</h1>
@@ -128,7 +123,6 @@ class DataVis extends Component {
           data={this.state.data}
           height={height}
           width={width}/>
-
       </svg>
 
     </div>
