@@ -20,7 +20,11 @@ function dateString(object) {
   let time = new Date(parseInt(object.time.toString() + "000"));
   return time.toLocaleDateString();
 }
-
+//bisector returns the insertion point for x
+//in array to maintain sorted order.
+//d3.bisectLeft(array, x[, lo[, hi]])
+//The arguments lo and hi may be used to specify a subset of the array
+//which should be considered; by default the entire array is used
 var bisectDate = bisector(function(d) { return d.time; }).left;
 var formatValue = format(",.2f");
 var formatCurrency = function(d) {return "$" + formatValue(d); };
@@ -69,11 +73,14 @@ class Mouse extends Component {
     } else {
       x.domain([data[0].time, data[data.length - 1].time]);
       y.domain(d3.extent(data, function(d) {return d.open; }));
-
+      //sets the rectangle overlay that will be sensitive for mouse movements
       let overlay = select('.overlay').node();
+      //the x point that the mouse is over (DateTime object)
       let x0 = x.invert(clientPoint(overlay, event)[0]);
-
+      //d3 array bisect (comments on line 23)
+      //i is the index of the data point to be inserted
       let i = bisectDate(data, x0, 1);
+      //data object at index [i - 1] and i, depending on
       let d0 = data[i - 1];
       let d1 = data[i];
       if (d1 === undefined) {
@@ -84,11 +91,12 @@ class Mouse extends Component {
       let parseDay = parseDate(day);
       let circle = select(".btc-circle");
 
+      // debugger
 
       focus.attr("transform", "translate(" + x(parseDate(d.time)) + "," + y(d.open) + ")");
       focus.select("text").text(
         "Date: " + parseDay);
-//takes care of rendering the text for data ~ date, open, close, high, low
+        //takes care of rendering the text for data ~ date, open, close, high, low
       focus.select("text")
         .append("tspan")
         .text("Open: " + formatCurrency(d.open))
